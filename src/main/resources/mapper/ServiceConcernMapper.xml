@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.neu.hcc.mapper.ServiceConcernMapper">
+  <resultMap id="BaseResultMap" type="com.neu.hcc.model.ServiceConcern">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="create_by" jdbcType="VARCHAR" property="createBy" />
+    <result column="create_date" jdbcType="TIMESTAMP" property="createDate" />
+    <result column="update_by" jdbcType="VARCHAR" property="updateBy" />
+    <result column="update_date" jdbcType="TIMESTAMP" property="updateDate" />
+    <result column="remarks" jdbcType="VARCHAR" property="remarks" />
+    <result column="del_flag" jdbcType="INTEGER" property="delFlag" />
+    <result column="customer_id" jdbcType="INTEGER" property="customerId" />
+    <result column="service_id" jdbcType="INTEGER" property="serviceId" />
+    <result column="amount" jdbcType="INTEGER" property="amount" />
+    <result column="maturity_time" jdbcType="TIMESTAMP" property="maturityTime" />
+    <result column="buy_time" jdbcType="TIMESTAMP" property="buyTime" />
+    <result column="other_info" jdbcType="VARCHAR" property="otherInfo" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from serviceConcern
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.neu.hcc.model.ServiceConcern">
+    insert into serviceConcern (id, create_by, create_date, 
+      update_by, update_date, remarks, 
+      del_flag, customer_id, service_id, 
+      amount, maturity_time, buy_time, 
+      other_info)
+    values (#{id,jdbcType=INTEGER}, #{createBy,jdbcType=VARCHAR}, #{createDate,jdbcType=TIMESTAMP}, 
+      #{updateBy,jdbcType=VARCHAR}, #{updateDate,jdbcType=TIMESTAMP}, #{remarks,jdbcType=VARCHAR}, 
+      #{delFlag,jdbcType=INTEGER}, #{customerId,jdbcType=INTEGER}, #{serviceId,jdbcType=INTEGER}, 
+      #{amount,jdbcType=INTEGER}, #{maturityTime,jdbcType=TIMESTAMP}, #{buyTime,jdbcType=TIMESTAMP}, 
+      #{otherInfo,jdbcType=VARCHAR})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.neu.hcc.model.ServiceConcern">
+    update serviceConcern
+    set create_by = #{createBy,jdbcType=VARCHAR},
+      create_date = #{createDate,jdbcType=TIMESTAMP},
+      update_by = #{updateBy,jdbcType=VARCHAR},
+      update_date = #{updateDate,jdbcType=TIMESTAMP},
+      remarks = #{remarks,jdbcType=VARCHAR},
+      del_flag = #{delFlag,jdbcType=INTEGER},
+      customer_id = #{customerId,jdbcType=INTEGER},
+      service_id = #{serviceId,jdbcType=INTEGER},
+      amount = #{amount,jdbcType=INTEGER},
+      maturity_time = #{maturityTime,jdbcType=TIMESTAMP},
+      buy_time = #{buyTime,jdbcType=TIMESTAMP},
+      other_info = #{otherInfo,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select id, create_by, create_date, update_by, update_date, remarks, del_flag, customer_id, 
+    service_id, amount, maturity_time, buy_time, other_info
+    from serviceConcern
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select id, create_by, create_date, update_by, update_date, remarks, del_flag, customer_id, 
+    service_id, amount, maturity_time, buy_time, other_info
+    from serviceConcern
+  </select>
+</mapper>

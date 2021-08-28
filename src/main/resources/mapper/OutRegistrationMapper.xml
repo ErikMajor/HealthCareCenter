@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.neu.hcc.mapper.OutRegistrationMapper">
+  <resultMap id="BaseResultMap" type="com.neu.hcc.model.OutRegistration">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="create_by" jdbcType="VARCHAR" property="createBy" />
+    <result column="create_date" jdbcType="TIMESTAMP" property="createDate" />
+    <result column="update_by" jdbcType="VARCHAR" property="updateBy" />
+    <result column="update_date" jdbcType="TIMESTAMP" property="updateDate" />
+    <result column="remarks" jdbcType="VARCHAR" property="remarks" />
+    <result column="del_flag" jdbcType="INTEGER" property="delFlag" />
+    <result column="customer_id" jdbcType="INTEGER" property="customerId" />
+    <result column="outgoing_reason" jdbcType="VARCHAR" property="outgoingReason" />
+    <result column="outgoing_time" jdbcType="TIMESTAMP" property="outgoingTime" />
+    <result column="expected_returnTime" jdbcType="TIMESTAMP" property="expectedReturntime" />
+    <result column="actual_returnTime" jdbcType="TIMESTAMP" property="actualReturntime" />
+    <result column="escorted" jdbcType="VARCHAR" property="escorted" />
+    <result column="relation" jdbcType="VARCHAR" property="relation" />
+    <result column="escorted_tel" jdbcType="VARCHAR" property="escortedTel" />
+    <result column="audit_status" jdbcType="VARCHAR" property="auditStatus" />
+    <result column="audit_person" jdbcType="VARCHAR" property="auditPerson" />
+    <result column="audit_time" jdbcType="TIMESTAMP" property="auditTime" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from outRegistration
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.neu.hcc.model.OutRegistration">
+    insert into outRegistration (id, create_by, create_date, 
+      update_by, update_date, remarks, 
+      del_flag, customer_id, outgoing_reason, 
+      outgoing_time, expected_returnTime, actual_returnTime, 
+      escorted, relation, escorted_tel, 
+      audit_status, audit_person, audit_time
+      )
+    values (#{id,jdbcType=INTEGER}, #{createBy,jdbcType=VARCHAR}, #{createDate,jdbcType=TIMESTAMP}, 
+      #{updateBy,jdbcType=VARCHAR}, #{updateDate,jdbcType=TIMESTAMP}, #{remarks,jdbcType=VARCHAR}, 
+      #{delFlag,jdbcType=INTEGER}, #{customerId,jdbcType=INTEGER}, #{outgoingReason,jdbcType=VARCHAR}, 
+      #{outgoingTime,jdbcType=TIMESTAMP}, #{expectedReturntime,jdbcType=TIMESTAMP}, #{actualReturntime,jdbcType=TIMESTAMP}, 
+      #{escorted,jdbcType=VARCHAR}, #{relation,jdbcType=VARCHAR}, #{escortedTel,jdbcType=VARCHAR}, 
+      #{auditStatus,jdbcType=VARCHAR}, #{auditPerson,jdbcType=VARCHAR}, #{auditTime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.neu.hcc.model.OutRegistration">
+    update outRegistration
+    set create_by = #{createBy,jdbcType=VARCHAR},
+      create_date = #{createDate,jdbcType=TIMESTAMP},
+      update_by = #{updateBy,jdbcType=VARCHAR},
+      update_date = #{updateDate,jdbcType=TIMESTAMP},
+      remarks = #{remarks,jdbcType=VARCHAR},
+      del_flag = #{delFlag,jdbcType=INTEGER},
+      customer_id = #{customerId,jdbcType=INTEGER},
+      outgoing_reason = #{outgoingReason,jdbcType=VARCHAR},
+      outgoing_time = #{outgoingTime,jdbcType=TIMESTAMP},
+      expected_returnTime = #{expectedReturntime,jdbcType=TIMESTAMP},
+      actual_returnTime = #{actualReturntime,jdbcType=TIMESTAMP},
+      escorted = #{escorted,jdbcType=VARCHAR},
+      relation = #{relation,jdbcType=VARCHAR},
+      escorted_tel = #{escortedTel,jdbcType=VARCHAR},
+      audit_status = #{auditStatus,jdbcType=VARCHAR},
+      audit_person = #{auditPerson,jdbcType=VARCHAR},
+      audit_time = #{auditTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select id, create_by, create_date, update_by, update_date, remarks, del_flag, customer_id, 
+    outgoing_reason, outgoing_time, expected_returnTime, actual_returnTime, escorted, 
+    relation, escorted_tel, audit_status, audit_person, audit_time
+    from outRegistration
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select id, create_by, create_date, update_by, update_date, remarks, del_flag, customer_id, 
+    outgoing_reason, outgoing_time, expected_returnTime, actual_returnTime, escorted, 
+    relation, escorted_tel, audit_status, audit_person, audit_time
+    from outRegistration
+  </select>
+</mapper>
