@@ -29,6 +29,8 @@ public class NursingContent {
 
     private String status;
 
+    private Integer levelId;
+
     public Integer getId() {
         return id;
     }
@@ -131,5 +133,13 @@ public class NursingContent {
 
     public void setStatus(String status) {
         this.status = status == null ? null : status.trim();
+    }
+
+    public Integer getLevelId() {
+        return levelId;
+    }
+
+    public void setLevelId(Integer levelId) {
+        this.levelId = levelId;
     }
 }

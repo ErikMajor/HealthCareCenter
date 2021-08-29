@@ -27,7 +27,7 @@ public class MealCalendar {
 
     private String foodPicture;
 
-    private String momalFlag;
+    private Boolean momalFlag;
 
     private String supplyDate;
 
@@ -129,12 +129,12 @@ public class MealCalendar {
         this.foodPicture = foodPicture == null ? null : foodPicture.trim();
     }
 
-    public String getMomalFlag() {
+    public Boolean getMomalFlag() {
         return momalFlag;
     }
 
-    public void setMomalFlag(String momalFlag) {
-        this.momalFlag = momalFlag == null ? null : momalFlag.trim();
+    public void setMomalFlag(Boolean momalFlag) {
+        this.momalFlag = momalFlag;
     }
 
     public String getSupplyDate() {
