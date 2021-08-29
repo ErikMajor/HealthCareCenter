@@ -6,11 +6,13 @@ import java.util.List;
 public interface MealCalendarMapper {
     int deleteByPrimaryKey(Integer id);
 
-    int insert(MealCalendar record);
+    void insert(MealCalendar mealCalendar);
 
     MealCalendar selectByPrimaryKey(Integer id);
 
     List<MealCalendar> selectAll();
 
     int updateByPrimaryKey(MealCalendar record);
+
+    int getFoodNum();
 }

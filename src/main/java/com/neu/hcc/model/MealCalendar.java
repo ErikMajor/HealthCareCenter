@@ -23,7 +23,7 @@ public class MealCalendar {
 
     private String foodTag;
 
-    private Float foodPrice;
+    private float foodPrice;
 
     private String foodPicture;
 
