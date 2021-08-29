@@ -20,7 +20,7 @@
     <result column="audit_person" jdbcType="VARCHAR" property="auditPerson" />
     <result column="audit_time" jdbcType="VARCHAR" property="auditTime" />
     <result column="contact_tel" jdbcType="TIMESTAMP" property="contactTel" />
-    <result column="AccommodationStatus" jdbcType="VARCHAR" property="accommodationstatus" />
+    <result column="AccommodationStatus" jdbcType="VARCHAR" property="accommodationStatus" />
   </resultMap>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from checkout

@@ -12,7 +12,7 @@
     <result column="customer_name" jdbcType="VARCHAR" property="customerName" />
     <result column="customer_age" jdbcType="VARCHAR" property="customerAge" />
     <result column="customer_sex" jdbcType="VARCHAR" property="customerSex" />
-    <result column="idCard" jdbcType="VARCHAR" property="idcard" />
+    <result column="idCard" jdbcType="VARCHAR" property="idCard" />
     <result column="room_id" jdbcType="INTEGER" property="roomId" />
     <result column="building_id" jdbcType="INTEGER" property="buildingId" />
     <result column="record_id" jdbcType="INTEGER" property="recordId" />
@@ -29,7 +29,7 @@
     <result column="weight" jdbcType="VARCHAR" property="weight" />
     <result column="blood_type" jdbcType="VARCHAR" property="bloodType" />
     <result column="file_path" jdbcType="VARCHAR" property="filePath" />
-    <result column="accommodationStatus" jdbcType="VARCHAR" property="accommodationstatus" />
+    <result column="accommodationStatus" jdbcType="VARCHAR" property="accommodationStatus" />
   </resultMap>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from checkin
