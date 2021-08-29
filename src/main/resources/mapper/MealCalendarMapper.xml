@@ -19,25 +19,25 @@
     <result column="supply_type" jdbcType="VARCHAR" property="supplyType" />
   </resultMap>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-    delete from mealCalendar
+    delete from keshe.mealCalendar
     where id = #{id,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="com.neu.hcc.model.MealCalendar">
-    insert into mealCalendar (id, create_by, create_date, 
-      update_by, update_date, remarks, 
-      del_flag, food_name, food_type, 
-      food_tag, food_price, food_picture, 
+    insert into keshe.mealCalendar (id, create_by, create_date,
+      update_by, update_date, remarks,
+      del_flag, food_name, food_type,
+      food_tag, food_price, food_picture,
       momal_flag, supply_date, supply_type
       )
-    values (#{id,jdbcType=INTEGER}, #{createBy,jdbcType=VARCHAR}, #{createDate,jdbcType=TIMESTAMP}, 
-      #{updateBy,jdbcType=VARCHAR}, #{updateDate,jdbcType=TIMESTAMP}, #{remarks,jdbcType=VARCHAR}, 
-      #{delFlag,jdbcType=INTEGER}, #{foodName,jdbcType=VARCHAR}, #{foodType,jdbcType=VARCHAR}, 
-      #{foodTag,jdbcType=VARCHAR}, #{foodPrice,jdbcType=REAL}, #{foodPicture,jdbcType=VARCHAR}, 
+    values (#{id,jdbcType=INTEGER}, #{createBy,jdbcType=VARCHAR}, #{createDate,jdbcType=TIMESTAMP},
+      #{updateBy,jdbcType=VARCHAR}, #{updateDate,jdbcType=TIMESTAMP}, #{remarks,jdbcType=VARCHAR},
+      #{delFlag,jdbcType=INTEGER}, #{foodName,jdbcType=VARCHAR}, #{foodType,jdbcType=VARCHAR},
+      #{foodTag,jdbcType=VARCHAR}, #{foodPrice,jdbcType=REAL}, #{foodPicture,jdbcType=VARCHAR},
       #{momalFlag,jdbcType=BIT}, #{supplyDate,jdbcType=VARCHAR}, #{supplyType,jdbcType=VARCHAR}
       )
   </insert>
   <update id="updateByPrimaryKey" parameterType="com.neu.hcc.model.MealCalendar">
-    update mealCalendar
+    update keshe.mealCalendar
     set create_by = #{createBy,jdbcType=VARCHAR},
       create_date = #{createDate,jdbcType=TIMESTAMP},
       update_by = #{updateBy,jdbcType=VARCHAR},
@@ -55,14 +55,18 @@
     where id = #{id,jdbcType=INTEGER}
   </update>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-    select id, create_by, create_date, update_by, update_date, remarks, del_flag, food_name, 
+    select id, create_by, create_date, update_by, update_date, remarks, del_flag, food_name,
     food_type, food_tag, food_price, food_picture, momal_flag, supply_date, supply_type
-    from mealCalendar
+    from keshe.mealCalendar
     where id = #{id,jdbcType=INTEGER}
   </select>
   <select id="selectAll" resultMap="BaseResultMap">
-    select id, create_by, create_date, update_by, update_date, remarks, del_flag, food_name, 
+    select id, create_by, create_date, update_by, update_date, remarks, del_flag, food_name,
     food_type, food_tag, food_price, food_picture, momal_flag, supply_date, supply_type
-    from mealCalendar
+    from keshe.mealCalendar
+  </select>
+  <select id="getFoodNum" resultType="java.lang.Integer">
+    select count(*)
+    from keshe.mealCalendar
   </select>
 </mapper>
