@@ -13,4 +13,6 @@ public interface NursingLevelMapper {
     List<NursingLevel> selectAll();
 
     int updateByPrimaryKey(NursingLevel record);
+
+    List<NursingLevel> selectAllByCondition(NursingLevel nursingLevel);
 }
