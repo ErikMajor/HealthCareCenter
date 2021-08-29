@@ -1,9 +1,9 @@
-package com.neu.hcc.service;
+package com.neu.hcc.service.impl;
 
 import com.google.gson.Gson;
-import com.neu.hcc.Tool.Encode;
 import com.neu.hcc.mapper.MealCalendarMapper;
 import com.neu.hcc.model.MealCalendar;
+import com.neu.hcc.service.MealService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,7 +14,7 @@ import java.util.List;
 import java.util.Map;
 
 @Service
-public class MealImpl implements MealService {
+public class MealServiceImpl implements MealService {
 
     @Autowired
     private MealCalendarMapper mealCalendarMapper;
