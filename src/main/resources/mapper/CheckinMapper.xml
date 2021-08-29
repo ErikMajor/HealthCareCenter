@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.neu.hcc.mapper.CheckinMapper">
+  <resultMap id="BaseResultMap" type="com.neu.hcc.model.Checkin">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="create_by" jdbcType="VARCHAR" property="createBy" />
+    <result column="create_date" jdbcType="TIMESTAMP" property="createDate" />
+    <result column="update_by" jdbcType="VARCHAR" property="updateBy" />
+    <result column="update_date" jdbcType="TIMESTAMP" property="updateDate" />
+    <result column="remarks" jdbcType="VARCHAR" property="remarks" />
+    <result column="del_flag" jdbcType="INTEGER" property="delFlag" />
+    <result column="customer_name" jdbcType="VARCHAR" property="customerName" />
+    <result column="customer_age" jdbcType="VARCHAR" property="customerAge" />
+    <result column="customer_sex" jdbcType="VARCHAR" property="customerSex" />
+    <result column="idCard" jdbcType="VARCHAR" property="idcard" />
+    <result column="room_id" jdbcType="INTEGER" property="roomId" />
+    <result column="building_id" jdbcType="INTEGER" property="buildingId" />
+    <result column="record_id" jdbcType="INTEGER" property="recordId" />
+    <result column="elder_type" jdbcType="VARCHAR" property="elderType" />
+    <result column="checkin_date" jdbcType="TIMESTAMP" property="checkinDate" />
+    <result column="expiration_date" jdbcType="VARCHAR" property="expirationDate" />
+    <result column="contact_tel" jdbcType="VARCHAR" property="contactTel" />
+    <result column="bed_id" jdbcType="INTEGER" property="bedId" />
+    <result column="psychosomatic_state" jdbcType="VARCHAR" property="psychosomaticState" />
+    <result column="attention" jdbcType="VARCHAR" property="attention" />
+    <result column="birthday" jdbcType="VARCHAR" property="birthday" />
+    <result column="height" jdbcType="VARCHAR" property="height" />
+    <result column="marital_status" jdbcType="VARCHAR" property="maritalStatus" />
+    <result column="weight" jdbcType="VARCHAR" property="weight" />
+    <result column="blood_type" jdbcType="VARCHAR" property="bloodType" />
+    <result column="file_path" jdbcType="VARCHAR" property="filePath" />
+    <result column="accommodationStatus" jdbcType="VARCHAR" property="accommodationstatus" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from checkin
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.neu.hcc.model.Checkin">
+    insert into checkin (id, create_by, create_date, 
+      update_by, update_date, remarks, 
+      del_flag, customer_name, customer_age, 
+      customer_sex, idCard, room_id, 
+      building_id, record_id, elder_type, 
+      checkin_date, expiration_date, contact_tel, 
+      bed_id, psychosomatic_state, attention, 
+      birthday, height, marital_status, 
+      weight, blood_type, file_path, 
+      accommodationStatus)
+    values (#{id,jdbcType=INTEGER}, #{createBy,jdbcType=VARCHAR}, #{createDate,jdbcType=TIMESTAMP}, 
+      #{updateBy,jdbcType=VARCHAR}, #{updateDate,jdbcType=TIMESTAMP}, #{remarks,jdbcType=VARCHAR}, 
+      #{delFlag,jdbcType=INTEGER}, #{customerName,jdbcType=VARCHAR}, #{customerAge,jdbcType=VARCHAR}, 
+      #{customerSex,jdbcType=VARCHAR}, #{idcard,jdbcType=VARCHAR}, #{roomId,jdbcType=INTEGER}, 
+      #{buildingId,jdbcType=INTEGER}, #{recordId,jdbcType=INTEGER}, #{elderType,jdbcType=VARCHAR}, 
+      #{checkinDate,jdbcType=TIMESTAMP}, #{expirationDate,jdbcType=VARCHAR}, #{contactTel,jdbcType=VARCHAR}, 
+      #{bedId,jdbcType=INTEGER}, #{psychosomaticState,jdbcType=VARCHAR}, #{attention,jdbcType=VARCHAR}, 
+      #{birthday,jdbcType=VARCHAR}, #{height,jdbcType=VARCHAR}, #{maritalStatus,jdbcType=VARCHAR}, 
+      #{weight,jdbcType=VARCHAR}, #{bloodType,jdbcType=VARCHAR}, #{filePath,jdbcType=VARCHAR}, 
+      #{accommodationstatus,jdbcType=VARCHAR})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.neu.hcc.model.Checkin">
+    update checkin
+    set create_by = #{createBy,jdbcType=VARCHAR},
+      create_date = #{createDate,jdbcType=TIMESTAMP},
+      update_by = #{updateBy,jdbcType=VARCHAR},
+      update_date = #{updateDate,jdbcType=TIMESTAMP},
+      remarks = #{remarks,jdbcType=VARCHAR},
+      del_flag = #{delFlag,jdbcType=INTEGER},
+      customer_name = #{customerName,jdbcType=VARCHAR},
+      customer_age = #{customerAge,jdbcType=VARCHAR},
+      customer_sex = #{customerSex,jdbcType=VARCHAR},
+      idCard = #{idcard,jdbcType=VARCHAR},
+      room_id = #{roomId,jdbcType=INTEGER},
+      building_id = #{buildingId,jdbcType=INTEGER},
+      record_id = #{recordId,jdbcType=INTEGER},
+      elder_type = #{elderType,jdbcType=VARCHAR},
+      checkin_date = #{checkinDate,jdbcType=TIMESTAMP},
+      expiration_date = #{expirationDate,jdbcType=VARCHAR},
+      contact_tel = #{contactTel,jdbcType=VARCHAR},
+      bed_id = #{bedId,jdbcType=INTEGER},
+      psychosomatic_state = #{psychosomaticState,jdbcType=VARCHAR},
+      attention = #{attention,jdbcType=VARCHAR},
+      birthday = #{birthday,jdbcType=VARCHAR},
+      height = #{height,jdbcType=VARCHAR},
+      marital_status = #{maritalStatus,jdbcType=VARCHAR},
+      weight = #{weight,jdbcType=VARCHAR},
+      blood_type = #{bloodType,jdbcType=VARCHAR},
+      file_path = #{filePath,jdbcType=VARCHAR},
+      accommodationStatus = #{accommodationstatus,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select id, create_by, create_date, update_by, update_date, remarks, del_flag, customer_name, 
+    customer_age, customer_sex, idCard, room_id, building_id, record_id, elder_type, 
+    checkin_date, expiration_date, contact_tel, bed_id, psychosomatic_state, attention, 
+    birthday, height, marital_status, weight, blood_type, file_path, accommodationStatus
+    from checkin
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select id, create_by, create_date, update_by, update_date, remarks, del_flag, customer_name, 
+    customer_age, customer_sex, idCard, room_id, building_id, record_id, elder_type, 
+    checkin_date, expiration_date, contact_tel, bed_id, psychosomatic_state, attention, 
+    birthday, height, marital_status, weight, blood_type, file_path, accommodationStatus
+    from checkin
+  </select>
+</mapper>

@@ -39,6 +39,8 @@ public class Checkout {
 
     private Date contactTel;
 
+    private String accommodationStatus;
+
     public Integer getId() {
         return id;
     }
@@ -181,5 +183,13 @@ public class Checkout {
 
     public void setContactTel(Date contactTel) {
         this.contactTel = contactTel;
+    }
+
+    public String getAccommodationStatus() {
+        return accommodationStatus;
+    }
+
+    public void setAccommodationStatus(String accommodationStatus) {
+        this.accommodationStatus = accommodationStatus == null ? null : accommodationStatus.trim();
     }
 }

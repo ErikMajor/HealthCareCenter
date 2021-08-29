@@ -23,7 +23,7 @@ public class Checkin {
 
     private String customerSex;
 
-    private String idcard;
+    private String idCard;
 
     private Integer roomId;
 
@@ -56,6 +56,8 @@ public class Checkin {
     private String bloodType;
 
     private String filePath;
+
+    private String accommodationStatus;
 
     public Integer getId() {
         return id;
@@ -137,12 +139,12 @@ public class Checkin {
         this.customerSex = customerSex == null ? null : customerSex.trim();
     }
 
-    public String getIdcard() {
-        return idcard;
+    public String getIdCard() {
+        return idCard;
     }
 
-    public void setIdcard(String idcard) {
-        this.idcard = idcard == null ? null : idcard.trim();
+    public void setIdCard(String idCard) {
+        this.idCard = idCard == null ? null : idCard.trim();
     }
 
     public Integer getRoomId() {
@@ -271,5 +273,13 @@ public class Checkin {
 
     public void setFilePath(String filePath) {
         this.filePath = filePath == null ? null : filePath.trim();
+    }
+
+    public String getAccommodationStatus() {
+        return accommodationStatus;
+    }
+
+    public void setAccommodationStatus(String accommodationStatus) {
+        this.accommodationStatus = accommodationStatus == null ? null : accommodationStatus.trim();
     }
 }

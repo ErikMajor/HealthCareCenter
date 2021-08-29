@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.neu.hcc.mapper.NursingContentMapper">
+  <resultMap id="BaseResultMap" type="com.neu.hcc.model.NursingContent">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="create_by" jdbcType="VARCHAR" property="createBy" />
+    <result column="create_date" jdbcType="TIMESTAMP" property="createDate" />
+    <result column="update_by" jdbcType="VARCHAR" property="updateBy" />
+    <result column="update_date" jdbcType="TIMESTAMP" property="updateDate" />
+    <result column="remarks" jdbcType="VARCHAR" property="remarks" />
+    <result column="del_flag" jdbcType="INTEGER" property="delFlag" />
+    <result column="serial_number" jdbcType="INTEGER" property="serialNumber" />
+    <result column="nursing_name" jdbcType="VARCHAR" property="nursingName" />
+    <result column="service_price" jdbcType="REAL" property="servicePrice" />
+    <result column="describe" jdbcType="VARCHAR" property="describe" />
+    <result column="increment_flag" jdbcType="VARCHAR" property="incrementFlag" />
+    <result column="status" jdbcType="VARCHAR" property="status" />
+    <result column="level_id" jdbcType="INTEGER" property="levelId" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from nursingContent
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.neu.hcc.model.NursingContent">
+    insert into nursingContent (id, create_by, create_date, 
+      update_by, update_date, remarks, 
+      del_flag, serial_number, nursing_name, 
+      service_price, describe, increment_flag, 
+      status, level_id)
+    values (#{id,jdbcType=INTEGER}, #{createBy,jdbcType=VARCHAR}, #{createDate,jdbcType=TIMESTAMP}, 
+      #{updateBy,jdbcType=VARCHAR}, #{updateDate,jdbcType=TIMESTAMP}, #{remarks,jdbcType=VARCHAR}, 
+      #{delFlag,jdbcType=INTEGER}, #{serialNumber,jdbcType=INTEGER}, #{nursingName,jdbcType=VARCHAR}, 
+      #{servicePrice,jdbcType=REAL}, #{describe,jdbcType=VARCHAR}, #{incrementFlag,jdbcType=VARCHAR}, 
+      #{status,jdbcType=VARCHAR}, #{levelId,jdbcType=INTEGER})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.neu.hcc.model.NursingContent">
+    update nursingContent
+    set create_by = #{createBy,jdbcType=VARCHAR},
+      create_date = #{createDate,jdbcType=TIMESTAMP},
+      update_by = #{updateBy,jdbcType=VARCHAR},
+      update_date = #{updateDate,jdbcType=TIMESTAMP},
+      remarks = #{remarks,jdbcType=VARCHAR},
+      del_flag = #{delFlag,jdbcType=INTEGER},
+      serial_number = #{serialNumber,jdbcType=INTEGER},
+      nursing_name = #{nursingName,jdbcType=VARCHAR},
+      service_price = #{servicePrice,jdbcType=REAL},
+      describe = #{describe,jdbcType=VARCHAR},
+      increment_flag = #{incrementFlag,jdbcType=VARCHAR},
+      status = #{status,jdbcType=VARCHAR},
+      level_id = #{levelId,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select id, create_by, create_date, update_by, update_date, remarks, del_flag, serial_number, 
+    nursing_name, service_price, describe, increment_flag, status, level_id
+    from nursingContent
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select id, create_by, create_date, update_by, update_date, remarks, del_flag, serial_number, 
+    nursing_name, service_price, describe, increment_flag, status, level_id
+    from nursingContent
+  </select>
+</mapper>

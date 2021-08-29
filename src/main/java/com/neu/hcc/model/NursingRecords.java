@@ -23,6 +23,8 @@ public class NursingRecords {
 
     private Date nursingTime;
 
+    private String nursingContent;
+
     private Integer nursingCount;
 
     private Integer staffnfoId;
@@ -107,6 +109,14 @@ public class NursingRecords {
 
     public void setNursingTime(Date nursingTime) {
         this.nursingTime = nursingTime;
+    }
+
+    public String getNursingContent() {
+        return nursingContent;
+    }
+
+    public void setNursingContent(String nursingContent) {
+        this.nursingContent = nursingContent == null ? null : nursingContent.trim();
     }
 
     public Integer getNursingCount() {

@@ -40,18 +40,18 @@
          </javaClientGenerator>
          
 		 <!-- 生成对应的表及类名 -->
-         <table tableName="bedManage" domainObjectName="BedManage"></table>
-         <table tableName="checkin" domainObjectName="Checkin"></table>
-         <table tableName="checkout" domainObjectName="Checkout"></table>
-         <table tableName="customerBeds" domainObjectName="CustomerBeds"></table>
-         <table tableName="mealCalendar" domainObjectName="MealCalendar"></table>
-         <table tableName="mealSetting" domainObjectName="MealSetting"></table>
-         <table tableName="nursingContent" domainObjectName="NursingContent"></table>
-         <table tableName="nursingLevel" domainObjectName="NursingLevel"></table>
-         <table tableName="nursingRecords" domainObjectName="NursingRecords"></table>
-         <table tableName="outRegistration" domainObjectName="OutRegistration"></table>
-         <table tableName="serviceConcern" domainObjectName="ServiceConcern"></table>
-         <table tableName="userManage" domainObjectName="UserManage"></table>
+         <table tableName="bedManage" domainObjectName="BedManage" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>
+         <table tableName="checkin" domainObjectName="Checkin" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>
+         <table tableName="checkout" domainObjectName="Checkout" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>
+         <table tableName="customerBeds" domainObjectName="CustomerBeds" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>
+         <table tableName="mealCalendar" domainObjectName="MealCalendar" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>
+         <table tableName="mealSetting" domainObjectName="MealSetting" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>
+         <table tableName="nursingContent" domainObjectName="NursingContent" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>
+         <table tableName="nursingLevel" domainObjectName="NursingLevel" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>
+         <table tableName="nursingRecords" domainObjectName="NursingRecords" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>
+         <table tableName="outRegistration" domainObjectName="OutRegistration" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>
+         <table tableName="serviceConcern" domainObjectName="ServiceConcern" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>
+         <table tableName="userManage" domainObjectName="UserManage" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>
 
     </context>
  </generatorConfiguration>
