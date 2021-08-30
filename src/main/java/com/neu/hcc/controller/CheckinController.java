@@ -4,10 +4,10 @@ import com.github.pagehelper.PageInfo;
 import com.neu.hcc.model.Checkin;
 import com.neu.hcc.service.CheckinService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * @author: YuCong
@@ -24,13 +24,24 @@ public class CheckinController {
     private CheckinService checkinService;
 
     @RequestMapping("selAll/{currentPage}")
-    public PageInfo<Checkin> selAll(@PathVariable(value = "currentPage") Integer currentPage) {
-        return checkinService.selAll(currentPage);
+    @ResponseBody
+    public Map<String, Object> selAll(@PathVariable(value = "currentPage") Integer currentPage) {
+        Map<String, Object> res = new HashMap<>();
+        PageInfo<Checkin> customers = checkinService.selAll(currentPage);
+        res.put("customers", customers.getList());
+        res.put("pages", customers.getPages());
+        return res;
     }
 
     @RequestMapping("queryByName/{currentPage}")
-    public PageInfo<Checkin> queryByName(@RequestParam(value = "name", defaultValue = "", required = true) String name, @PathVariable(value = "currentPage") Integer currentPage) {
-        return checkinService.selByName(name, currentPage);
+    @ResponseBody
+    public Map<String, Object> queryByName(@RequestParam(value = "name", defaultValue = "", required = true) String name, @PathVariable(value = "currentPage") Integer currentPage) {
+        System.out.println(name);
+        Map<String, Object> res = new HashMap<>();
+        PageInfo<Checkin> customers = checkinService.selByName(name, currentPage);
+        res.put("customers", customers.getList());
+        res.put("pages", customers.getPages());
+        return res;
     }
 
 }

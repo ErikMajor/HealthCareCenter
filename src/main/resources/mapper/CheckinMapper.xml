@@ -123,6 +123,7 @@
     </select>
     <select id="selectAll" resultMap="BaseResultMap">
         <include refid="allColumns"></include>
+        where del_flag = 0
     </select>
     <sql id="allColumns">
         select id,
@@ -157,6 +158,6 @@
     </sql>
     <select id="selectByName" resultMap="BaseResultMap" parameterType="java.lang.String">
         <include refid="allColumns"></include>
-        where customer_name like '%${name}%'
+        where customer_name like '%${name}%' and del_flag = 0
     </select>
 </mapper>
