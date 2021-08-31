@@ -11,6 +11,7 @@ import com.neu.hcc.util.Define;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -51,17 +52,22 @@ public class NursingLevelServiceImpl implements NursingLevelService {
 
     @Override
     public void del(Integer id) {
-
+        nursingLevelMapper.deleteByPrimaryKey(id);
     }
 
     @Override
     public void add(NursingLevel nursingLevel) {
-
+        nursingLevel.setCreateBy("1");
+        nursingLevel.setCreateDate(new Date());
+        nursingLevel.setUpdateBy("1");
+        nursingLevel.setUpdateDate(new Date());
+        nursingLevelMapper.insert(nursingLevel);
     }
 
     @Override
     public void update(NursingLevel nursingLevel) {
-
+        nursingLevel.setUpdateDate(new Date());
+        nursingLevelMapper.updateByPrimaryKey(nursingLevel);
     }
 
 }

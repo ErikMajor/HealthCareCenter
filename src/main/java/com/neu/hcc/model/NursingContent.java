@@ -23,13 +23,23 @@ public class NursingContent {
 
     private Float servicePrice;
 
-    private String describe;
+    private String contentDescribe;
 
     private String incrementFlag;
 
-    private String status;
+    private String contentStatus;
 
     private Integer levelId;
+
+    private NursingLevel nursingLevel;
+
+    public NursingLevel getNursingLevel() {
+        return nursingLevel;
+    }
+
+    public void setNursingLevel(NursingLevel nursingLevel) {
+        this.nursingLevel = nursingLevel;
+    }
 
     public Integer getId() {
         return id;
@@ -111,12 +121,12 @@ public class NursingContent {
         this.servicePrice = servicePrice;
     }
 
-    public String getDescribe() {
-        return describe;
+    public String getContentDescribe() {
+        return contentDescribe;
     }
 
-    public void setDescribe(String describe) {
-        this.describe = describe == null ? null : describe.trim();
+    public void setContentDescribe(String contentDescribe) {
+        this.contentDescribe = contentDescribe == null ? null : contentDescribe.trim();
     }
 
     public String getIncrementFlag() {
@@ -127,12 +137,12 @@ public class NursingContent {
         this.incrementFlag = incrementFlag == null ? null : incrementFlag.trim();
     }
 
-    public String getStatus() {
-        return status;
+    public String getContentStatus() {
+        return contentStatus;
     }
 
-    public void setStatus(String status) {
-        this.status = status == null ? null : status.trim();
+    public void setContentStatus(String contentStatus) {
+        this.contentStatus = contentStatus == null ? null : contentStatus.trim();
     }
 
     public Integer getLevelId() {
