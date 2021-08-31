@@ -40,4 +40,9 @@ public class CheckinServiceImpl implements CheckinService {
         PageInfo<Checkin> res = new PageInfo<Checkin>(checkinMapper.selectAll());
         return res;
     }
+
+    @Override
+    public int addCustomer(Checkin checkin) {
+        return checkinMapper.insert(checkin);
+    }
 }

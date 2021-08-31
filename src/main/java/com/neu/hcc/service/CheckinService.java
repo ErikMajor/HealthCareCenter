@@ -27,4 +27,12 @@ public interface CheckinService {
      * @return 返回入住客户信息
      */
     PageInfo<Checkin> selAll(Integer currentPage);
+
+    /**
+     * 添加入住记录
+     *
+     * @param checkin 入住信息
+     * @return
+     */
+    int addCustomer(Checkin checkin);
 }

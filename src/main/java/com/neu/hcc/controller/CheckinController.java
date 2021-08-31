@@ -44,4 +44,18 @@ public class CheckinController {
         return res;
     }
 
+    @RequestMapping("addCustomer")
+    @ResponseBody
+    public Map<String, Object> addCustomer(@RequestParam(value = "customer", required = true) Checkin checkin) {
+        System.out.println(checkin);
+        Map<String, Object> res = new HashMap<>();
+        int rows = checkinService.addCustomer(checkin);
+        if (rows == 0) {
+            res.put("state", "false");
+            return res;
+        }
+        res.put("state", "true");
+        return res;
+    }
+
 }
