@@ -16,4 +16,6 @@ public interface ServiceConcernMapper {
     List<ServiceConcern> selectAll();
 
     int updateByPrimaryKey(ServiceConcern record);
+
+    List<ServiceConcern> searchCustomerService(ServiceConcern record);
 }

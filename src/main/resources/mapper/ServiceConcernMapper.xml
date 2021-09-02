@@ -15,25 +15,27 @@
     <result column="maturity_time" jdbcType="TIMESTAMP" property="maturityTime" />
     <result column="buy_time" jdbcType="TIMESTAMP" property="buyTime" />
     <result column="other_info" jdbcType="VARCHAR" property="otherInfo" />
+    <result column="customer_name" jdbcType="VARCHAR" property="customerName" />
+    <result column="nursing_name" jdbcType="VARCHAR" property="nursingName" />
   </resultMap>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-    delete from serviceConcern
+    delete from keshe.serviceConcern
     where id = #{id,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="com.neu.hcc.model.ServiceConcern">
-    insert into serviceConcern (id, create_by, create_date, 
-      update_by, update_date, remarks, 
-      del_flag, customer_id, service_id, 
-      amount, maturity_time, buy_time, 
+    insert into keshe.serviceConcern (id, create_by, create_date,
+      update_by, update_date, remarks,
+      del_flag, customer_id, service_id,
+      amount, maturity_time, buy_time,
       other_info)
-    values (#{id,jdbcType=INTEGER}, #{createBy,jdbcType=VARCHAR}, #{createDate,jdbcType=TIMESTAMP}, 
-      #{updateBy,jdbcType=VARCHAR}, #{updateDate,jdbcType=TIMESTAMP}, #{remarks,jdbcType=VARCHAR}, 
-      #{delFlag,jdbcType=INTEGER}, #{customerId,jdbcType=INTEGER}, #{serviceId,jdbcType=INTEGER}, 
-      #{amount,jdbcType=INTEGER}, #{maturityTime,jdbcType=TIMESTAMP}, #{buyTime,jdbcType=TIMESTAMP}, 
+    values (#{id,jdbcType=INTEGER}, #{createBy,jdbcType=VARCHAR}, #{createDate,jdbcType=TIMESTAMP},
+      #{updateBy,jdbcType=VARCHAR}, #{updateDate,jdbcType=TIMESTAMP}, #{remarks,jdbcType=VARCHAR},
+      #{delFlag,jdbcType=INTEGER}, #{customerId,jdbcType=INTEGER}, #{serviceId,jdbcType=INTEGER},
+      #{amount,jdbcType=INTEGER}, #{maturityTime,jdbcType=TIMESTAMP}, #{buyTime,jdbcType=TIMESTAMP},
       #{otherInfo,jdbcType=VARCHAR})
   </insert>
   <update id="updateByPrimaryKey" parameterType="com.neu.hcc.model.ServiceConcern">
-    update serviceConcern
+    update keshe.serviceConcern
     set create_by = #{createBy,jdbcType=VARCHAR},
       create_date = #{createDate,jdbcType=TIMESTAMP},
       update_by = #{updateBy,jdbcType=VARCHAR},
@@ -49,14 +51,22 @@
     where id = #{id,jdbcType=INTEGER}
   </update>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-    select id, create_by, create_date, update_by, update_date, remarks, del_flag, customer_id, 
+    select id, create_by, create_date, update_by, update_date, remarks, del_flag, customer_id,
     service_id, amount, maturity_time, buy_time, other_info
-    from serviceConcern
+    from keshe.serviceConcern
     where id = #{id,jdbcType=INTEGER}
   </select>
   <select id="selectAll" resultMap="BaseResultMap">
-    select id, create_by, create_date, update_by, update_date, remarks, del_flag, customer_id, 
+    select id, create_by, create_date, update_by, update_date, remarks, del_flag, customer_id,
     service_id, amount, maturity_time, buy_time, other_info
-    from serviceConcern
+    from keshe.serviceConcern
+  </select>
+
+  <select id="searchCustomerService" parameterType="java.lang.Object" resultMap="BaseResultMap">
+    select customer_id,keshe.checkin.customer_name,service_id,keshe.nursingContent.nursing_name,amount,maturity_time,buy_time
+    from keshe.checkin,keshe.serviceConcern,keshe.nursingContent
+    where keshe.checkin.id = #{customerId}
+    and (keshe.nursingContent.id = (select service_id from keshe.serviceConcern
+        where keshe.serviceConcern.customer_id = #{customerId}))
   </select>
 </mapper>

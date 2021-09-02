@@ -29,6 +29,26 @@ public class ServiceConcern {
 
     private String otherInfo;
 
+    public String getCustomerName() {
+        return customerName;
+    }
+
+    public void setCustomerName(String customerName) {
+        this.customerName = customerName;
+    }
+
+    public String getNursingName() {
+        return nursingName;
+    }
+
+    public void setNursingName(String nursingName) {
+        this.nursingName = nursingName;
+    }
+
+    private String customerName;
+
+    private String nursingName;
+
     public Integer getId() {
         return id;
     }

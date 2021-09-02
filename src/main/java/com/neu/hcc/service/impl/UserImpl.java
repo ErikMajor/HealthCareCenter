@@ -2,7 +2,9 @@ package com.neu.hcc.service.impl;
 
 import com.google.gson.Gson;
 import com.neu.hcc.mapper.NursingLevelMapper;
+import com.neu.hcc.mapper.ServiceConcernMapper;
 import com.neu.hcc.mapper.UserManageMapper;
+import com.neu.hcc.model.ServiceConcern;
 import com.neu.hcc.model.UserManage;
 import com.neu.hcc.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +19,9 @@ public class UserImpl implements UserService {
 
     @Autowired
     private UserManageMapper userManageMapper;
+
+    @Autowired
+    private ServiceConcernMapper serviceConcernMapper;
 
     @Override
     public String register(UserManage userManage) {
@@ -37,5 +42,11 @@ public class UserImpl implements UserService {
             result.put("state", "failed");
             return new Gson().toJson(result);
         }
+    }
+
+    @Override
+    public List<ServiceConcern> searchCustomerService(ServiceConcern serviceConcern) {
+        System.out.println(serviceConcernMapper.searchCustomerService(serviceConcern).get(0).getCustomerName()+"测试");
+        return serviceConcernMapper.searchCustomerService(serviceConcern);
     }
 }
