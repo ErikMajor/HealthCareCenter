@@ -66,7 +66,10 @@
     select customer_id,keshe.checkin.customer_name,service_id,keshe.nursingContent.nursing_name,amount,maturity_time,buy_time
     from keshe.checkin,keshe.serviceConcern,keshe.nursingContent
     where keshe.checkin.id = #{customerId}
-    and (keshe.nursingContent.id = (select service_id from keshe.serviceConcern
-        where keshe.serviceConcern.customer_id = #{customerId}))
+      and keshe.serviceConcern.customer_id = #{customerId}
+      and (keshe.nursingContent.id
+      in (select service_id from keshe.serviceConcern
+          where keshe.serviceConcern.customer_id = #{customerId}))
+      and keshe.serviceConcern.service_id = keshe.nursingContent.id
   </select>
 </mapper>

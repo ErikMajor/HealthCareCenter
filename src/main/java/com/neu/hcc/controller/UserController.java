@@ -29,7 +29,7 @@ public class UserController {
         return userService.login(userManage);
     }
 
-    @RequestMapping("selectAllByCondition")
+    @RequestMapping("searchCustomerService")
     public List<ServiceConcern> selectAllByCondition(@RequestBody ServiceConcern serviceConcern){
         return userService.selectAllByCondition(serviceConcern);
     }
