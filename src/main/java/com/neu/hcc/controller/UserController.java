@@ -34,9 +34,9 @@ public class UserController {
         return userService.selectAllByCondition(serviceConcern);
     }
 
-    @RequestMapping("selAll")
+    @RequestMapping("selectAll")
     public List<UserManage> selAll(){
-        return userService.selAll();
+        return userService.selectAll();
     }
 
     @RequestMapping("del/{id}")

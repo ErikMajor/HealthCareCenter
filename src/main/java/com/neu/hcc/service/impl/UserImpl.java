@@ -63,7 +63,7 @@ public class UserImpl implements UserService {
     }
 
     @Override
-    public List<UserManage> selAll() {
+    public List<UserManage> selectAll() {
         return userManageMapper.selectAll();
     }
 

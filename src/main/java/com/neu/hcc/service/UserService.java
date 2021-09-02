@@ -16,7 +16,7 @@ public interface UserService {
 
     PageInfo<UserManage> queryAll(UserManage userManage,Integer currPage);
 
-    List<UserManage> selAll();
+    List<UserManage> selectAll();
 
     void del(Integer id);
 
