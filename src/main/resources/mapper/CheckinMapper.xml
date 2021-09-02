@@ -84,7 +84,7 @@
                                    accommodationStatus)
         values (#{id,jdbcType=INTEGER}, #{createBy,jdbcType=VARCHAR}, #{createDate,jdbcType=TIMESTAMP},
                 #{updateBy,jdbcType=VARCHAR}, #{updateDate,jdbcType=TIMESTAMP}, #{remarks,jdbcType=VARCHAR},
-                #{delFlag,jdbcType=INTEGER}, #{customerName,jdbcType=VARCHAR}, #{customerAge,jdbcType=VARCHAR},
+                0, #{customerName,jdbcType=VARCHAR}, #{customerAge,jdbcType=VARCHAR},
                 #{customerSex,jdbcType=VARCHAR}, #{idcard,jdbcType=VARCHAR}, #{roomId,jdbcType=INTEGER},
                 #{buildingId,jdbcType=INTEGER}, #{recordId,jdbcType=INTEGER}, #{elderType,jdbcType=VARCHAR},
                 #{checkinDate,jdbcType=TIMESTAMP}, #{expirationDate,jdbcType=VARCHAR}, #{contactTel,jdbcType=VARCHAR},
@@ -215,7 +215,7 @@
     </select>
     <select id="selectListByName" resultMap="map" parameterType="java.lang.String">
         <include refid="allColumns"></include>
-        where customer_name like '%${name}%' and del_flag = 0
+        where customer_name like '%${name}%'
     </select>
     <update id="updateRoomId" parameterType="com.neu.hcc.model.Checkin">
         update keshe.checkin
