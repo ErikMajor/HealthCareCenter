@@ -25,7 +25,7 @@ public class CheckinServiceImpl implements CheckinService {
 
 
     @Override
-    public PageInfo<Checkin> selByName(String name, Integer currentPage) {
+    public PageInfo<Checkin> selByNameWithPage(String name, Integer currentPage) {
         if (currentPage == null) {
             currentPage = 1;
         }
@@ -42,6 +42,12 @@ public class CheckinServiceImpl implements CheckinService {
         PageHelper.startPage(currentPage, Define.ADMIN_PAGE_SIZE);
         PageInfo<Checkin> res = new PageInfo<Checkin>(checkinMapper.selectAll());
         return res;
+    }
+
+    @Override
+    public List<Checkin> selListByName(String name) {
+        List<Checkin> checkins = new ArrayList<>(checkinMapper.selectListByName(name));
+        return checkins;
     }
 
     @Override

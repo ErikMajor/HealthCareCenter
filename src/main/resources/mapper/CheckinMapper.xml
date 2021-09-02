@@ -179,6 +179,9 @@
         <include refid="allColumns"></include>
         where customer_name like '%${name}%' and del_flag = 0
     </select>
+    <select id="selectListByName" resultMap="BaseResultMap" parameterType="java.lang.String">
+        select id, customer_name as value from checkin where customer_name like '%${name}%' and del_flag = 0
+    </select>
     <update id="updateRoomId" parameterType="com.neu.hcc.model.Checkin">
         update keshe.checkin
         set room_id = #{roomId}

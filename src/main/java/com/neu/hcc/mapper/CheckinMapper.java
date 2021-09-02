@@ -25,4 +25,6 @@ public interface CheckinMapper {
     List<Checkin> queryUser(Checkin record);
 
     void updateRoomId(int roomId,int roomNumber);
+
+    List<Checkin> selectListByName(String name);
 }

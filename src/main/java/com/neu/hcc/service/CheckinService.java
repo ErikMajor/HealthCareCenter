@@ -20,7 +20,15 @@ public interface CheckinService {
      * @param currentPage 分页查找参数
      * @return 返回入住客户类
      */
-    PageInfo<Checkin> selByName(String name, Integer currentPage);
+    PageInfo<Checkin> selByNameWithPage(String name, Integer currentPage);
+
+    /**
+     * 根据name模糊查找，只有客户名称作为value
+     *
+     * @param name
+     * @return
+     */
+    public List<Checkin> selListByName(String name);
 
     /**
      * 返回所有的入住客户信息

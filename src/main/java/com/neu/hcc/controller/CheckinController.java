@@ -43,12 +43,21 @@ public class CheckinController {
         return res;
     }
 
-    @RequestMapping("queryByName/{currentPage}")
+    @RequestMapping("queryListByName")
     @ResponseBody
-    public Map<String, Object> queryByName(@RequestParam(value = "name", defaultValue = "", required = true) String name, @PathVariable(value = "currentPage") Integer currentPage) {
+    public Map<String, Object> queryByName(@RequestParam(value = "name", defaultValue = "", required = true) String name) {
+        Map<String, Object> res = new HashMap<>();
+        List<Checkin> customers = checkinService.selListByName(name);
+        res.put("customers", customers);
+        return res;
+    }
+
+    @RequestMapping("queryByNameWithPage/{currentPage}")
+    @ResponseBody
+    public Map<String, Object> queryByNameWithPage(@RequestParam(value = "name", defaultValue = "", required = true) String name, @PathVariable(value = "currentPage") Integer currentPage) {
         System.out.println(name);
         Map<String, Object> res = new HashMap<>();
-        PageInfo<Checkin> customers = checkinService.selByName(name, currentPage);
+        PageInfo<Checkin> customers = checkinService.selByNameWithPage(name, currentPage);
         res.put("customers", customers.getList());
         res.put("pages", customers.getPages());
         return res;
