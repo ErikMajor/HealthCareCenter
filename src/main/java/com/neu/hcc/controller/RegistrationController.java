@@ -37,10 +37,8 @@ public class RegistrationController {
         System.out.println(outRegistration.toString());
         Map<String, Object> res = new HashMap<>();
         int rows = registrationService.insert(outRegistration);
-        if (rows == 0) {
-            res.put("state", "false");
-            return res;
-        }
+        System.out.println("last_insert_id:" + outRegistration.getId());
+        res.put("id", outRegistration.getId());
         res.put("state", "true");
         return res;
     }

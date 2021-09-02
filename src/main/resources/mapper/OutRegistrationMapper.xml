@@ -31,7 +31,7 @@
         from outRegistration
         where id = #{id,jdbcType=INTEGER}
     </delete>
-    <insert id="insert" parameterType="com.neu.hcc.model.OutRegistration">
+    <insert id="insert" useGeneratedKeys="true" keyProperty="id" parameterType="com.neu.hcc.model.OutRegistration">
         insert into outRegistration (id, create_by, create_date,
                                      update_by, update_date, remarks,
                                      del_flag, customer_id, outgoing_reason,
@@ -44,7 +44,10 @@
                 #{outgoingTime,jdbcType=TIMESTAMP}, #{expectedReturntime,jdbcType=TIMESTAMP},
                 #{actualReturntime,jdbcType=TIMESTAMP},
                 #{escorted,jdbcType=VARCHAR}, #{relation,jdbcType=VARCHAR}, #{escortedTel,jdbcType=VARCHAR},
-                #{auditStatus,jdbcType=VARCHAR}, #{auditPerson,jdbcType=VARCHAR}, #{auditTime,jdbcType=TIMESTAMP})
+                #{auditStatus,jdbcType=VARCHAR}, #{auditPerson,jdbcType=VARCHAR}, #{auditTime,jdbcType=TIMESTAMP});
+        <selectKey resultType="int" keyProperty="id" order="AFTER">
+            select last_insert_id()
+        </selectKey>
     </insert>
     <update id="updateByPrimaryKey" parameterType="com.neu.hcc.model.OutRegistration">
         update outRegistration
@@ -86,7 +89,7 @@
                audit_person,
                audit_time
         from outRegistration
-        where id = #{id,jdbcType=INTEGER}
+        where customer_id = #{id,jdbcType=INTEGER}
           and actual_returnTime is null
           and del_flag = 0
         order by outgoing_time desc

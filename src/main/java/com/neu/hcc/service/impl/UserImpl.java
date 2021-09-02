@@ -49,7 +49,6 @@ public class UserImpl implements UserService {
 
     @Override
     public List<ServiceConcern> selectAllByCondition(ServiceConcern serviceConcern) {
-        System.out.println(serviceConcernMapper.searchCustomerService(serviceConcern).get(0).getCustomerName()+"测试");
         return serviceConcernMapper.searchCustomerService(serviceConcern);
     }
 
@@ -77,4 +76,5 @@ public class UserImpl implements UserService {
         userManage.setUpdateDate(new Date());
         userManageMapper.updateByPrimaryKey(userManage);
     }
+
 }
