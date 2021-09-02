@@ -94,7 +94,7 @@ public class CheckinController {
 
     @RequestMapping("addCustomer")
     @ResponseBody
-    public Map<String, Object> addCustomer(@RequestParam(value = "customer", required = true) Checkin checkin) {
+    public Map<String, Object> addCustomer(@RequestBody Checkin checkin) {
         System.out.println(checkin);
         Map<String, Object> res = new HashMap<>();
         int rows = checkinService.addCustomer(checkin);
