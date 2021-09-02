@@ -9,6 +9,9 @@ import com.neu.hcc.util.Define;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * @author: YuCong
  * @date: 2021.8.29
@@ -32,13 +35,19 @@ public class CheckinServiceImpl implements CheckinService {
     }
 
     @Override
-    public PageInfo<Checkin> selAll(Integer currentPage) {
+    public PageInfo<Checkin> selAllWithPage(Integer currentPage) {
         if (currentPage == null) {
             currentPage = 1;
         }
         PageHelper.startPage(currentPage, Define.ADMIN_PAGE_SIZE);
         PageInfo<Checkin> res = new PageInfo<Checkin>(checkinMapper.selectAll());
         return res;
+    }
+
+    @Override
+    public List<Checkin> selAll() {
+        List<Checkin> checkins = new ArrayList<>(checkinMapper.selectAll());
+        return checkins;
     }
 
     @Override

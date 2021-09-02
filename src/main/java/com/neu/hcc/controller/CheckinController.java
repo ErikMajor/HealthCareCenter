@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -23,11 +24,20 @@ public class CheckinController {
     @Autowired
     private CheckinService checkinService;
 
-    @RequestMapping("selAll/{currentPage}")
+    @RequestMapping("selAll")
     @ResponseBody
-    public Map<String, Object> selAll(@PathVariable(value = "currentPage") Integer currentPage) {
+    public Map<String, Object> selAll() {
         Map<String, Object> res = new HashMap<>();
-        PageInfo<Checkin> customers = checkinService.selAll(currentPage);
+        List<Checkin> customers = checkinService.selAll();
+        res.put("customers", customers);
+        return res;
+    }
+
+    @RequestMapping("selAllWithPage/{currentPage}")
+    @ResponseBody
+    public Map<String, Object> selAllWithPage(@PathVariable(value = "currentPage") Integer currentPage) {
+        Map<String, Object> res = new HashMap<>();
+        PageInfo<Checkin> customers = checkinService.selAllWithPage(currentPage);
         res.put("customers", customers.getList());
         res.put("pages", customers.getPages());
         return res;

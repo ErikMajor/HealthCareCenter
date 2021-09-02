@@ -4,6 +4,8 @@ import com.github.pagehelper.PageInfo;
 import com.neu.hcc.model.Checkin;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 /**
  * @author: YuCong
  * @date: 2021.8.29
@@ -26,7 +28,14 @@ public interface CheckinService {
      * @param currentPage 分页查找参数
      * @return 返回入住客户信息
      */
-    PageInfo<Checkin> selAll(Integer currentPage);
+    PageInfo<Checkin> selAllWithPage(Integer currentPage);
+
+    /**
+     * 直接查询全部入住客户
+     *
+     * @return 返回客户信息列表
+     */
+    List<Checkin> selAll();
 
     /**
      * 添加入住记录
