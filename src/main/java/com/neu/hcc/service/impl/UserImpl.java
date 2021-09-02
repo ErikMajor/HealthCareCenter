@@ -1,15 +1,18 @@
 package com.neu.hcc.service.impl;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.google.gson.Gson;
-import com.neu.hcc.mapper.NursingLevelMapper;
 import com.neu.hcc.mapper.ServiceConcernMapper;
 import com.neu.hcc.mapper.UserManageMapper;
 import com.neu.hcc.model.ServiceConcern;
 import com.neu.hcc.model.UserManage;
 import com.neu.hcc.service.UserService;
+import com.neu.hcc.util.Define;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -48,5 +51,21 @@ public class UserImpl implements UserService {
     public List<ServiceConcern> searchCustomerService(ServiceConcern serviceConcern) {
         System.out.println(serviceConcernMapper.searchCustomerService(serviceConcern).get(0).getCustomerName()+"测试");
         return serviceConcernMapper.searchCustomerService(serviceConcern);
+    }
+
+    @Override
+    public List<UserManage> selAll() {
+        return userManageMapper.selectAll();
+    }
+
+    @Override
+    public void del(Integer id) {
+        userManageMapper.deleteByPrimaryKey(id);
+    }
+
+    @Override
+    public void update(UserManage userManage) {
+        userManage.setUpdateDate(new Date());
+        userManageMapper.updateByPrimaryKey(userManage);
     }
 }
