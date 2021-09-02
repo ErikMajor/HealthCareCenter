@@ -22,27 +22,27 @@
     <result column="phone_number" jdbcType="VARCHAR" property="phoneNumber" />
   </resultMap>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-    delete from userManage
+    delete from keshe.userManage
     where id = #{id,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="com.neu.hcc.model.UserManage">
-    insert into userManage (id, create_by, create_date, 
-      update_by, update_date, remarks, 
-      del_flag, staff_name, staff_sex, 
-      staff_age, staff_number, staff_type, 
-      entry_date, operate_name, duty, 
+    insert into keshe.userManage (id, create_by, create_date,
+      update_by, update_date, remarks,
+      del_flag, staff_name, staff_sex,
+      staff_age, staff_number, staff_type,
+      entry_date, operate_name, duty,
       position_title, brief, phone_number
       )
-    values (#{id,jdbcType=INTEGER}, #{createBy,jdbcType=VARCHAR}, #{createDate,jdbcType=TIMESTAMP}, 
-      #{updateBy,jdbcType=VARCHAR}, #{updateDate,jdbcType=TIMESTAMP}, #{remarks,jdbcType=VARCHAR}, 
-      #{delFlag,jdbcType=INTEGER}, #{staffName,jdbcType=VARCHAR}, #{staffSex,jdbcType=VARCHAR}, 
-      #{staffAge,jdbcType=VARCHAR}, #{staffNumber,jdbcType=INTEGER}, #{staffType,jdbcType=VARCHAR}, 
-      #{entryDate,jdbcType=TIMESTAMP}, #{operateName,jdbcType=VARCHAR}, #{duty,jdbcType=VARCHAR}, 
+    values (#{id,jdbcType=INTEGER}, #{createBy,jdbcType=VARCHAR}, #{createDate,jdbcType=TIMESTAMP},
+      #{updateBy,jdbcType=VARCHAR}, #{updateDate,jdbcType=TIMESTAMP}, #{remarks,jdbcType=VARCHAR},
+      #{delFlag,jdbcType=INTEGER}, #{staffName,jdbcType=VARCHAR}, #{staffSex,jdbcType=VARCHAR},
+      #{staffAge,jdbcType=VARCHAR}, #{staffNumber,jdbcType=INTEGER}, #{staffType,jdbcType=VARCHAR},
+      #{entryDate,jdbcType=TIMESTAMP}, #{operateName,jdbcType=VARCHAR}, #{duty,jdbcType=VARCHAR},
       #{positionTitle,jdbcType=VARCHAR}, #{brief,jdbcType=VARCHAR}, #{phoneNumber,jdbcType=VARCHAR}
       )
   </insert>
   <update id="updateByPrimaryKey" parameterType="com.neu.hcc.model.UserManage">
-    update userManage
+    update keshe.userManage
     set create_by = #{createBy,jdbcType=VARCHAR},
       create_date = #{createDate,jdbcType=TIMESTAMP},
       update_by = #{updateBy,jdbcType=VARCHAR},
@@ -63,16 +63,25 @@
     where id = #{id,jdbcType=INTEGER}
   </update>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-    select id, create_by, create_date, update_by, update_date, remarks, del_flag, staff_name, 
-    staff_sex, staff_age, staff_number, staff_type, entry_date, operate_name, duty, position_title, 
+    select id, create_by, create_date, update_by, update_date, remarks, del_flag, staff_name,
+    staff_sex, staff_age, staff_number, staff_type, entry_date, operate_name, duty, position_title,
     brief, phone_number
-    from userManage
+    from keshe.userManage
     where id = #{id,jdbcType=INTEGER}
   </select>
   <select id="selectAll" resultMap="BaseResultMap">
-    select id, create_by, create_date, update_by, update_date, remarks, del_flag, staff_name, 
-    staff_sex, staff_age, staff_number, staff_type, entry_date, operate_name, duty, position_title, 
+    select id, create_by, create_date, update_by, update_date, remarks, del_flag, staff_name,
+    staff_sex, staff_age, staff_number, staff_type, entry_date, operate_name, duty, position_title,
     brief, phone_number
-    from userManage
+    from keshe.userManage
+  </select>
+  <select id="login" parameterType="java.lang.Object" resultMap="BaseResultMap">
+    select id, create_by, create_date, update_by, update_date, remarks, del_flag, staff_name,
+           staff_sex, staff_age, staff_number, staff_type, entry_date, operate_name, duty, position_title,
+           brief, phone_number
+    from keshe.userManage
+    where staff_number = #{staffNumber,jdbcType=INTEGER}
+    and phone_number = #{phoneNumber,jdbcType=VARCHAR}
+    and staff_type = #{staffType,jdbcType=VARCHAR}
   </select>
 </mapper>
