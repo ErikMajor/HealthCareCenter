@@ -1,5 +1,6 @@
 package com.neu.hcc.mapper;
 
+import com.neu.hcc.model.NursingLevel;
 import com.neu.hcc.model.NursingRecords;
 import org.springframework.stereotype.Repository;
 
@@ -16,4 +17,6 @@ public interface NursingRecordsMapper {
     List<NursingRecords> selectAll();
 
     int updateByPrimaryKey(NursingRecords record);
+
+    List<NursingRecords> selectAllByCondition(NursingRecords nursingRecords);
 }

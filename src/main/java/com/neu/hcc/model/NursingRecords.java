@@ -31,6 +31,36 @@ public class NursingRecords {
 
     private Integer nursingId;
 
+    private NursingContent nursingContentItem;
+
+    private UserManage userManage;
+
+    private Checkin checkin;
+
+    public UserManage getUserManage() {
+        return userManage;
+    }
+
+    public void setUserManage(UserManage userManage) {
+        this.userManage = userManage;
+    }
+
+    public Checkin getCheckin() {
+        return checkin;
+    }
+
+    public void setCheckin(Checkin checkin) {
+        this.checkin = checkin;
+    }
+
+    public NursingContent getNursingContentItem() {
+        return nursingContentItem;
+    }
+
+    public void setNursingContentItem(NursingContent nursingContentItem) {
+        this.nursingContentItem = nursingContentItem;
+    }
+
     public Integer getId() {
         return id;
     }

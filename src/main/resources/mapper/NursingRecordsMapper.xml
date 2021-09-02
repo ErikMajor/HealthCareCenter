@@ -17,6 +17,85 @@
     <result column="staffnfo_id" jdbcType="INTEGER" property="staffnfoId" />
     <result column="nursing_id" jdbcType="INTEGER" property="nursingId" />
   </resultMap>
+
+  <resultMap id="connResultMap" type="com.neu.hcc.model.NursingRecords" extends="BaseResultMap">
+    <!-- 一对一关联 -->
+    <!--
+      property: 一对一关联封装的父表的对象名
+      column: 两张表的关联字段名
+      javaType: 一对一关联封装的父表的类名
+    -->
+    <association property="nursingContentItem" column="content_id" javaType="com.neu.hcc.model.NursingContent">
+      <id column="ncid" property="id"></id>
+      <result column="nccreate_by" property="createBy"></result>
+      <result column="nccreate_date" property="createDate"></result>
+      <result column="ncupdate_by" property="updateBy"></result>
+      <result column="ncupdate_date" property="updateDate"></result>
+      <result column="ncremarks" property="remarks"></result>
+      <result column="ncdel_flag" property="delFlag"></result>
+      <result column="ncserial_number" property="serialNumber"></result>
+      <result column="ncnursing_name" property="nursingName"></result>
+      <result column="ncservice_price" property="servicePrice"></result>
+      <result column="nccontent_describe" property="contentDescribe"></result>
+      <result column="ncincrement_flag" property="incrementFlag"></result>
+      <result column="nccontent_status" property="contentStatus"></result>
+      <result column="nclevel_id" property="levelId"></result>
+    </association>
+
+    <association property="checkin" column="customer_id" javaType="com.neu.hcc.model.Checkin">
+      <id column="cid" property="id"></id>
+      <result column="ccreate_by" property="createBy"></result>
+      <result column="ccreate_date" property="createDate"></result>
+      <result column="cupdate_by"  property="updateBy"></result>
+      <result column="cupdate_date"  property="updateDate"></result>
+      <result column="cremarks"  property="remarks"></result>
+      <result column="cdel_flag"  property="delFlag"></result>
+      <result column="ccustomer_name"  property="customerName"></result>
+      <result column="ccustomer_age"  property="customerAge"></result>
+      <result column="ccustomer_sex"  property="customerSex"></result>
+      <result column="cidCard"  property="idCard"></result>
+      <result column="croom_id"  property="roomId"></result>
+      <result column="cbuilding_id"  property="buildingId"></result>
+      <result column="crecord_id" property="recordId"></result>
+      <result column="celder_type"  property="elderType"></result>
+      <result column="ccheckin_date"  property="checkinDate"></result>
+      <result column="cexpiration_date"  property="expirationDate"></result>
+      <result column="ccontact_tel"  property="contactTel"></result>
+      <result column="cbed_id"  property="bedId"></result>
+      <result column="cpsychosomatic_state"  property="psychosomaticState"></result>
+      <result column="cattention"  property="attention"></result>
+      <result column="cbirthday"  property="birthday"></result>
+      <result column="cheight"  property="height"></result>
+      <result column="cmarital_status"  property="maritalStatus"></result>
+      <result column="cweight"  property="weight"></result>
+      <result column="cblood_type"  property="bloodType"></result>
+      <result column="cfile_path"  property="filePath"></result>
+      <result column="caccommodationStatus"  property="accommodationStatus"></result>
+    </association>
+
+    <association property="userManage" column="staffnfo_id" javaType="com.neu.hcc.model.UserManage">
+      <id column="umid" property="id"></id>
+      <result column="umcreate_by"  property="createBy" ></result>
+      <result column="umcreate_date"  property="createDate" ></result>
+      <result column="umupdate_by"  property="updateBy" ></result>
+      <result column="umupdate_date"  property="updateDate" ></result>
+      <result column="umremarks" property="remarks" ></result>
+      <result column="umdel_flag"  property="delFlag" ></result>
+      <result column="umstaff_name"  property="staffName" ></result>
+      <result column="umstaff_sex"  property="staffSex" ></result>
+      <result column="umstaff_age"  property="staffAge" ></result>
+      <result column="umstaff_number"  property="staffNumber" ></result>
+      <result column="umstaff_type"  property="staffType" ></result>
+      <result column="umentry_date"  property="entryDate" ></result>
+      <result column="umoperate_name"  property="operateName" ></result>
+      <result column="umduty"  property="duty" ></result>
+      <result column="umposition_title"  property="positionTitle" ></result>
+      <result column="umbrief"  property="brief" ></result>
+      <result column="umphone_number"  property="phoneNumber" ></result>
+    </association>
+  </resultMap>
+
+
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from nursingRecords
     where id = #{id,jdbcType=INTEGER}
@@ -57,8 +136,38 @@
     where id = #{id,jdbcType=INTEGER}
   </select>
   <select id="selectAll" resultMap="BaseResultMap">
-    select id, create_by, create_date, update_by, update_date, remarks, del_flag, customer_id, 
+    select id, create_by, create_date, update_by, update_date, remarks, del_flag, customer_id,
     content_id, nursing_time, nursing_content, nursing_count, staffnfo_id, nursing_id
     from nursingRecords
+  </select>
+
+  <select id="selectAllByCondition" parameterType="com.neu.hcc.model.NursingContent" resultMap="connResultMap">
+    select nr.id, nr.create_by, nr.create_date, nr.update_by, nr.update_date, nr.remarks, nr.del_flag, nr.customer_id,
+    nr.content_id, nr.nursing_time, nr.nursing_content, nr.nursing_count, nr.staffnfo_id, nr.nursing_id,
+    nc.id ncid, nc.create_by nccreate_by,  nc.create_date nccreate_date, nc.update_by ncupdate_by, nc.update_date ncupdate_date, nc.remarks ncremarks, nc.del_flag ncdel_flag, nc.serial_number ncserial_number,
+    nc.nursing_name ncnursing_name, nc.service_price ncservice_price, nc.content_describe nccontent_describe, nc.increment_flag ncincrement_flag, nc.content_status nccontent_status, nc.level_id nclevel_id,
+    c.id cid,c.create_by ccreate_by,c.create_date ccreate_date,c.update_by cupdate_by,c.update_date cupdate_date,c.remarks cremarks,c.del_flag cdel_flag,c.customer_name ccustomer_name,c.customer_age ccustomer_age,
+    c.customer_sex ccustomer_sex,c.idCard cidCard,c.room_id croom_id,c.building_id cbuilding_id,c.record_id crecord_id,c.elder_type celder_type,c.checkin_date ccheckin_date,c.expiration_date cexpiration_date,
+    c.contact_tel ccontact_tel,c.bed_id cbed_id,c.psychosomatic_state cpsychosomatic_state,c.attention cattention,c.birthday cbirthday,c.height cheight,c.marital_status cmarital_status,c.weight cweight,c.blood_type cblood_type,
+    c.file_path cfile_path,c.accommodationStatus caccommodationStatus,
+    um.id umid, um.create_by umcreate_by, um.create_date umcreate_date, um.update_by umupdate_by, um.update_date umupdate_date, um.remarks umremarks, um.del_flag umdel_flag, um.staff_name umstaff_name,
+    um.staff_sex umstaff_sex, um.staff_age umstaff_age, um.staff_number umstaff_number, um.staff_type umstaff_type, um.entry_date umentry_date, um.operate_name umoperate_name, um.duty umduty, um.position_title umposition_title,
+    um.brief umbrief, um.phone_number umphone_number
+    from nursingRecords nr
+    left join nursingContent nc on nr.content_id = nc.id
+    left join checkin c on nr.customer_id = c.id
+    left join userManage um on nr.staffnfo_id = um.id
+    <where>
+      <if test="checkin.customerName != null and checkin.customerName !=''">
+        c.customer_name like concat('%',#{checkin.customerName},'%')
+      </if>
+      <if test="userManage.staffName != null and userManage.staffName != ''">
+        and um.staff_name like concat('%',#{userManage.staffName},'%')
+      </if>
+      <if test="nursingTime != null">
+        and DATE_FORMAT(nr.nursing_time,'%Y-%m-%d')  like DATE_FORMAT(#{nursingTime},'%Y-%m-%d')
+      </if>
+    </where>
+    order by nr.create_date desc
   </select>
 </mapper>

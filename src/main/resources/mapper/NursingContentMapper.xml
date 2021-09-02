@@ -91,5 +91,14 @@
     nl.level_status
     from nursingContent nc
     left join nursingLevel nl on nc.level_id = nl.id
+    <where>
+      <if test="nursingName != null and nursingName !=''">
+        nursing_name like concat('%',#{nursingName},'%')
+      </if>
+      <if test="levelId != null and levelId != ''">
+        and nl.id=#{levelId}
+      </if>
+    </where>
+    order by nc.id
   </select>
 </mapper>
