@@ -48,9 +48,18 @@ public class UserImpl implements UserService {
     }
 
     @Override
-    public List<ServiceConcern> searchCustomerService(ServiceConcern serviceConcern) {
+    public List<ServiceConcern> selectAllByCondition(ServiceConcern serviceConcern) {
         System.out.println(serviceConcernMapper.searchCustomerService(serviceConcern).get(0).getCustomerName()+"测试");
         return serviceConcernMapper.searchCustomerService(serviceConcern);
+    }
+
+    @Override
+    public PageInfo<UserManage> queryAll(UserManage userManage, Integer currPage) {
+        if (currPage == null)
+            currPage = 1;
+        PageHelper.startPage(currPage, Define.ADMIN_PAGE_SIZE);
+        PageInfo<UserManage> pageInfo = new PageInfo<>(userManageMapper.selectAllByCondition(userManage));
+        return pageInfo;
     }
 
     @Override

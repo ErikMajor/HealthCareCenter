@@ -84,4 +84,9 @@
     and phone_number = #{phoneNumber,jdbcType=VARCHAR}
     and staff_type = #{staffType,jdbcType=VARCHAR}
   </select>
+  <select id="selectAllByCondition" parameterType="java.lang.Object" resultMap="BaseResultMap">
+    select id, create_by, create_date, update_by, update_date, staff_name,
+           staff_sex, staff_age
+    from keshe.userManage
+  </select>
 </mapper>

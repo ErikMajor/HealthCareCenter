@@ -18,4 +18,6 @@ public interface UserManageMapper {
     int updateByPrimaryKey(UserManage record);
 
     List<UserManage> login(UserManage record);
+
+    List<UserManage> selectAllByCondition(UserManage userManage);
 }

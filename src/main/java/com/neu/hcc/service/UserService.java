@@ -12,7 +12,9 @@ public interface UserService {
 
     String login(UserManage userManage);
 
-    List<ServiceConcern> searchCustomerService(ServiceConcern serviceConcern);
+    List<ServiceConcern> selectAllByCondition(ServiceConcern serviceConcern);
+
+    PageInfo<UserManage> queryAll(UserManage userManage,Integer currPage);
 
     List<UserManage> selAll();
 
