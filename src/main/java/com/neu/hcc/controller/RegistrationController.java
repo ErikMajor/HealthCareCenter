@@ -31,7 +31,21 @@ public class RegistrationController {
         return res;
     }
 
-    @RequestMapping("update")
+    @RequestMapping("out")
+    @ResponseBody
+    public Map<String, Object> out(@RequestBody OutRegistration outRegistration) {
+        System.out.println(outRegistration.toString());
+        Map<String, Object> res = new HashMap<>();
+        int rows = registrationService.insert(outRegistration);
+        if (rows == 0) {
+            res.put("state", "false");
+            return res;
+        }
+        res.put("state", "true");
+        return res;
+    }
+
+    @RequestMapping("back")
     @ResponseBody
     public Map<String, Object> back(@RequestBody OutRegistration outRegistration) {
         System.out.println(outRegistration.toString());

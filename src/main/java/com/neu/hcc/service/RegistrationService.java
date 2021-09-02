@@ -20,6 +20,14 @@ public interface RegistrationService {
     OutRegistration selByIdRecent(Integer id);
 
     /**
+     * 外出
+     *
+     * @param outRegistration
+     * @return
+     */
+    int insert(OutRegistration outRegistration);
+
+    /**
      * 登记外出/返回
      *
      * @param outRegistration

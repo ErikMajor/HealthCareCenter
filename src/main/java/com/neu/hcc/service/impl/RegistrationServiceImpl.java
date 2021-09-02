@@ -23,6 +23,11 @@ public class RegistrationServiceImpl implements RegistrationService {
     }
 
     @Override
+    public int insert(OutRegistration outRegistration) {
+        return mapper.insert(outRegistration);
+    }
+
+    @Override
     public int update(OutRegistration outRegistration) {
         return mapper.updateByPrimaryKey(outRegistration);
     }
