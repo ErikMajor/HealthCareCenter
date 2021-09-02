@@ -29,6 +29,7 @@ public class BedController {
 
     @RequestMapping("addCustomerBed")
     public String addCustomerBed(@RequestBody BedManage bedManage){
+
         return bedService.addCustomerBed(bedManage);
     }
 
