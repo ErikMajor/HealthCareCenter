@@ -56,7 +56,6 @@ public class MealServiceImpl implements MealService {
 
     @Override
     public int getMealNum(MealSetting mealSetting) {
-        System.out.println(mealCalendarMapper.getMealNum(mealSetting)+"测试1");
         return mealCalendarMapper.getMealNum(mealSetting);
     }
 

@@ -13,21 +13,21 @@
     <result column="level_status" jdbcType="VARCHAR" property="levelStatus" />
   </resultMap>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-    delete from nursingLevel
+    delete from keshe.nursingLevel
     where id = #{id,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="com.neu.hcc.model.NursingLevel">
-    insert into nursingLevel (id, create_by, create_date, 
-      update_by, update_date, remarks, 
+    insert into keshe.nursingLevel (id, create_by, create_date,
+      update_by, update_date, remarks,
       del_flag, level_name, level_status
       )
-    values (#{id,jdbcType=INTEGER}, #{createBy,jdbcType=VARCHAR}, #{createDate,jdbcType=TIMESTAMP}, 
-      #{updateBy,jdbcType=VARCHAR}, #{updateDate,jdbcType=TIMESTAMP}, #{remarks,jdbcType=VARCHAR}, 
+    values (#{id,jdbcType=INTEGER}, #{createBy,jdbcType=VARCHAR}, #{createDate,jdbcType=TIMESTAMP},
+      #{updateBy,jdbcType=VARCHAR}, #{updateDate,jdbcType=TIMESTAMP}, #{remarks,jdbcType=VARCHAR},
       #{delFlag,jdbcType=INTEGER}, #{levelName,jdbcType=VARCHAR}, #{levelStatus,jdbcType=VARCHAR}
       )
   </insert>
   <update id="updateByPrimaryKey" parameterType="com.neu.hcc.model.NursingLevel">
-    update nursingLevel
+    update keshe.nursingLevel
     set create_by = #{createBy,jdbcType=VARCHAR},
       create_date = #{createDate,jdbcType=TIMESTAMP},
       update_by = #{updateBy,jdbcType=VARCHAR},
@@ -39,21 +39,21 @@
     where id = #{id,jdbcType=INTEGER}
   </update>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-    select id, create_by, create_date, update_by, update_date, remarks, del_flag, level_name, 
+    select id, create_by, create_date, update_by, update_date, remarks, del_flag, level_name,
     level_status
-    from nursingLevel
+    from keshe.nursingLevel
     where id = #{id,jdbcType=INTEGER}
   </select>
   <select id="selectAll" resultMap="BaseResultMap">
-    select id, create_by, create_date, update_by, update_date, remarks, del_flag, level_name, 
+    select id, create_by, create_date, update_by, update_date, remarks, del_flag, level_name,
     level_status
-    from nursingLevel
+    from keshe.nursingLevel
   </select>
 
   <select id="selectAllByCondition" parameterType="com.neu.hcc.model.NursingLevel" resultMap="BaseResultMap">
     select id, create_by, create_date, update_by, update_date, remarks, del_flag, level_name,
     level_status
-    from nursingLevel
+    from keshe.nursingLevel
     <where>
       <if test="levelName != null and levelName !=''">
         level_name like concat('%',#{levelName},'%')

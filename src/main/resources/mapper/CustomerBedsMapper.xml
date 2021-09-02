@@ -18,23 +18,23 @@
     <result column="nursing_id" jdbcType="INTEGER" property="nursingId" />
   </resultMap>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-    delete from customerBeds
+    delete from keshe.customerBeds
     where id = #{id,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="com.neu.hcc.model.CustomerBeds">
-    insert into customerBeds (id, create_by, create_date, 
-      update_by, update_date, remarks, 
-      del_flag, customer_id, content_id, 
-      nursing_time, nursing_content, nursing_count, 
+    insert into keshe.customerBeds (id, create_by, create_date,
+      update_by, update_date, remarks,
+      del_flag, customer_id, content_id,
+      nursing_time, nursing_content, nursing_count,
       staffnfo_id, nursing_id)
-    values (#{id,jdbcType=INTEGER}, #{createBy,jdbcType=VARCHAR}, #{createDate,jdbcType=TIMESTAMP}, 
-      #{updateBy,jdbcType=VARCHAR}, #{updateDate,jdbcType=TIMESTAMP}, #{remarks,jdbcType=VARCHAR}, 
-      #{delFlag,jdbcType=INTEGER}, #{customerId,jdbcType=INTEGER}, #{contentId,jdbcType=INTEGER}, 
-      #{nursingTime,jdbcType=TIMESTAMP}, #{nursingContent,jdbcType=VARCHAR}, #{nursingCount,jdbcType=INTEGER}, 
+    values (#{id,jdbcType=INTEGER}, #{createBy,jdbcType=VARCHAR}, #{createDate,jdbcType=TIMESTAMP},
+      #{updateBy,jdbcType=VARCHAR}, #{updateDate,jdbcType=TIMESTAMP}, #{remarks,jdbcType=VARCHAR},
+      #{delFlag,jdbcType=INTEGER}, #{customerId,jdbcType=INTEGER}, #{contentId,jdbcType=INTEGER},
+      #{nursingTime,jdbcType=TIMESTAMP}, #{nursingContent,jdbcType=VARCHAR}, #{nursingCount,jdbcType=INTEGER},
       #{staffnfoId,jdbcType=INTEGER}, #{nursingId,jdbcType=INTEGER})
   </insert>
   <update id="updateByPrimaryKey" parameterType="com.neu.hcc.model.CustomerBeds">
-    update customerBeds
+    update keshe.customerBeds
     set create_by = #{createBy,jdbcType=VARCHAR},
       create_date = #{createDate,jdbcType=TIMESTAMP},
       update_by = #{updateBy,jdbcType=VARCHAR},
@@ -51,14 +51,14 @@
     where id = #{id,jdbcType=INTEGER}
   </update>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-    select id, create_by, create_date, update_by, update_date, remarks, del_flag, customer_id, 
+    select id, create_by, create_date, update_by, update_date, remarks, del_flag, customer_id,
     content_id, nursing_time, nursing_content, nursing_count, staffnfo_id, nursing_id
-    from customerBeds
+    from keshe.customerBeds
     where id = #{id,jdbcType=INTEGER}
   </select>
   <select id="selectAll" resultMap="BaseResultMap">
-    select id, create_by, create_date, update_by, update_date, remarks, del_flag, customer_id, 
+    select id, create_by, create_date, update_by, update_date, remarks, del_flag, customer_id,
     content_id, nursing_time, nursing_content, nursing_count, staffnfo_id, nursing_id
-    from customerBeds
+    from keshe.customerBeds
   </select>
 </mapper>
