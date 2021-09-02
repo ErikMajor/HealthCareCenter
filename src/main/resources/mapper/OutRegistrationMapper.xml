@@ -62,12 +62,12 @@
       audit_time = #{auditTime,jdbcType=TIMESTAMP}
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+  <select id="selectByPrimaryKeyRecent" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select id, create_by, create_date, update_by, update_date, remarks, del_flag, customer_id, 
     outgoing_reason, outgoing_time, expected_returnTime, actual_returnTime, escorted, 
     relation, escorted_tel, audit_status, audit_person, audit_time
     from outRegistration
-    where id = #{id,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER} and actual_returnTime is null order by outgoing_time desc limit 1
   </select>
   <select id="selectAll" resultMap="BaseResultMap">
     select id, create_by, create_date, update_by, update_date, remarks, del_flag, customer_id, 

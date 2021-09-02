@@ -11,7 +11,7 @@ public interface OutRegistrationMapper {
 
     int insert(OutRegistration record);
 
-    OutRegistration selectByPrimaryKey(Integer id);
+    OutRegistration selectByPrimaryKeyRecent(Integer id);
 
     List<OutRegistration> selectAll();
 
