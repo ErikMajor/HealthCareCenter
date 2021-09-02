@@ -16,6 +16,8 @@ public interface CheckinMapper {
 
     List<Checkin> selectAll();
 
+    List<Checkin> selectAll1();
+
     List<Checkin> selectByName(String name);
 
     int updateByPrimaryKey(Checkin record);

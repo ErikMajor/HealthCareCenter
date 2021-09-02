@@ -21,7 +21,7 @@ public class CustomerImpl implements CustomerService {
 
     @Override
     public List<Checkin> selectAll() {
-        return checkinMapper.selectAll();
+        return checkinMapper.selectAll1();
     }
 
     @Override

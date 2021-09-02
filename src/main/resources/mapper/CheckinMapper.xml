@@ -173,7 +173,7 @@
                blood_type,
                file_path,
                accommodationStatus
-        from checkin
+        from keshe.checkin
     </sql>
     <select id="selectByName" resultMap="BaseResultMap" parameterType="java.lang.String">
         <include refid="allColumns"></include>
@@ -187,4 +187,11 @@
                from keshe.bedManage
                where room_number = #{roomNumber})
     </update>
+    <select id="selectAll1" resultMap="BaseResultMap">
+        select id, create_by, create_date, update_by, update_date, remarks, del_flag, customer_name,
+               customer_age, customer_sex, idCard, room_id, building_id, record_id, elder_type,
+               checkin_date, expiration_date, contact_tel, bed_id, psychosomatic_state, attention,
+               birthday, height, marital_status, weight, blood_type, file_path, accommodationStatus
+        from keshe.checkin
+    </select>
 </mapper>
