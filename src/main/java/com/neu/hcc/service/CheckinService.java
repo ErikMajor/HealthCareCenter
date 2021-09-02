@@ -29,7 +29,7 @@ public interface CheckinService {
      * @param name
      * @return
      */
-    public List<Customer> selListByName(String name);
+    List<Customer> selListByName(String name);
 
     /**
      * 返回所有的入住客户信息
@@ -47,10 +47,26 @@ public interface CheckinService {
     List<Checkin> selAll();
 
     /**
+     * 更新客户信息
+     *
+     * @param checkin
+     * @return
+     */
+    int updateCustomer(Checkin checkin);
+
+    /**
      * 添加入住记录
      *
      * @param checkin 入住信息
      * @return
      */
     int addCustomer(Checkin checkin);
+
+    /**
+     * 逻辑删除入住记录
+     *
+     * @param id
+     * @return
+     */
+    int deleteCheckin(Integer id);
 }

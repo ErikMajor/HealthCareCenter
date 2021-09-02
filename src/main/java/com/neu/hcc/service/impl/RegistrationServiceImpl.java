@@ -21,4 +21,14 @@ public class RegistrationServiceImpl implements RegistrationService {
     public OutRegistration selByIdRecent(Integer id) {
         return mapper.selectByPrimaryKeyRecent(id);
     }
+
+    @Override
+    public int update(OutRegistration outRegistration) {
+        return mapper.updateByPrimaryKey(outRegistration);
+    }
+
+    @Override
+    public int delete(Integer id) {
+        return mapper.updateDel_flag(id);
+    }
 }

@@ -61,6 +61,11 @@
         <result column="file_path" jdbcType="VARCHAR" property="filePath"/>
         <result column="accommodationStatus" jdbcType="VARCHAR" property="accommodationStatus"/>
     </resultMap>
+    <update id="updateDel_flag" parameterType="java.lang.Integer">
+        update keshe.checkin
+        set del_flag = 1
+        where id = #{id,jdbcType=INTEGER}
+    </update>
     <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
         delete
         from keshe.checkin
@@ -95,7 +100,6 @@
             update_by           = #{updateBy,jdbcType=VARCHAR},
             update_date         = #{updateDate,jdbcType=TIMESTAMP},
             remarks             = #{remarks,jdbcType=VARCHAR},
-            del_flag            = #{delFlag,jdbcType=INTEGER},
             customer_name       = #{customerName,jdbcType=VARCHAR},
             customer_age        = #{customerAge,jdbcType=VARCHAR},
             customer_sex        = #{customerSex,jdbcType=VARCHAR},
@@ -222,10 +226,34 @@
                where room_number = #{roomNumber})
     </update>
     <select id="selectAll1" resultMap="BaseResultMap">
-        select id, create_by, create_date, update_by, update_date, remarks, del_flag, customer_name,
-               customer_age, customer_sex, idCard, room_id, building_id, record_id, elder_type,
-               checkin_date, expiration_date, contact_tel, bed_id, psychosomatic_state, attention,
-               birthday, height, marital_status, weight, blood_type, file_path, accommodationStatus
+        select id,
+               create_by,
+               create_date,
+               update_by,
+               update_date,
+               remarks,
+               del_flag,
+               customer_name,
+               customer_age,
+               customer_sex,
+               idCard,
+               room_id,
+               building_id,
+               record_id,
+               elder_type,
+               checkin_date,
+               expiration_date,
+               contact_tel,
+               bed_id,
+               psychosomatic_state,
+               attention,
+               birthday,
+               height,
+               marital_status,
+               weight,
+               blood_type,
+               file_path,
+               accommodationStatus
         from keshe.checkin
     </select>
 </mapper>

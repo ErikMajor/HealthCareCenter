@@ -1,11 +1,9 @@
 package com.neu.hcc.controller;
 
+import com.neu.hcc.model.OutRegistration;
 import com.neu.hcc.service.RegistrationService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -30,6 +28,33 @@ public class RegistrationController {
         System.out.println(id);
         Map<String, Object> res = new HashMap<>();
         res.put("registration", registrationService.selByIdRecent(id));
+        return res;
+    }
+
+    @RequestMapping("update")
+    @ResponseBody
+    public Map<String, Object> back(@RequestBody OutRegistration outRegistration) {
+        System.out.println(outRegistration.toString());
+        Map<String, Object> res = new HashMap<>();
+        int rows = registrationService.update(outRegistration);
+        if (rows == 0) {
+            res.put("state", "false");
+            return res;
+        }
+        res.put("state", "true");
+        return res;
+    }
+
+    @RequestMapping("delete")
+    @ResponseBody
+    public Map<String, Object> delete(@RequestParam(value = "id", required = true) Integer id) {
+        Map<String, Object> res = new HashMap<>();
+        int rows = registrationService.delete(id);
+        if (rows == 0) {
+            res.put("state", "false");
+            return res;
+        }
+        res.put("state", "true");
         return res;
     }
 }

@@ -25,7 +25,7 @@ public class Checkout {
 
     private String retreatReason;
 
-    private String status;
+    private String checkoutStatus;
 
     private Integer buildingId;
 
@@ -89,6 +89,10 @@ public class Checkout {
         this.remarks = remarks == null ? null : remarks.trim();
     }
 
+    public String getaccommodationstatus() {
+        return accommodationStatus;
+    }
+
     public Integer getDelFlag() {
         return delFlag;
     }
@@ -129,12 +133,12 @@ public class Checkout {
         this.retreatReason = retreatReason == null ? null : retreatReason.trim();
     }
 
-    public String getStatus() {
-        return status;
+    public String getCheckoutStatus() {
+        return checkoutStatus;
     }
 
-    public void setStatus(String status) {
-        this.status = status == null ? null : status.trim();
+    public void setCheckoutStatus(String checkoutStatus) {
+        this.checkoutStatus = checkoutStatus == null ? null : checkoutStatus.trim();
     }
 
     public Integer getBuildingId() {
@@ -191,5 +195,30 @@ public class Checkout {
 
     public void setAccommodationStatus(String accommodationStatus) {
         this.accommodationStatus = accommodationStatus == null ? null : accommodationStatus.trim();
+    }
+
+    @Override
+    public String toString() {
+        return "Checkout{" +
+                "id=" + id +
+                ", createBy='" + createBy + '\'' +
+                ", createDate=" + createDate +
+                ", updateBy='" + updateBy + '\'' +
+                ", updateDate=" + updateDate +
+                ", remarks='" + remarks + '\'' +
+                ", delFlag=" + delFlag +
+                ", customerId=" + customerId +
+                ", retreatTime=" + retreatTime +
+                ", retreatType='" + retreatType + '\'' +
+                ", retreatReason='" + retreatReason + '\'' +
+                ", checkoutStatus='" + checkoutStatus + '\'' +
+                ", buildingId=" + buildingId +
+                ", askTime=" + askTime +
+                ", auditOpinion='" + auditOpinion + '\'' +
+                ", auditPerson='" + auditPerson + '\'' +
+                ", auditTime='" + auditTime + '\'' +
+                ", contactTel=" + contactTel +
+                ", accommodationStatus='" + accommodationStatus + '\'' +
+                '}';
     }
 }

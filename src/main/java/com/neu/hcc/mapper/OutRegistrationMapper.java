@@ -13,6 +13,8 @@ public interface OutRegistrationMapper {
 
     OutRegistration selectByPrimaryKeyRecent(Integer id);
 
+    int updateDel_flag(Integer id);
+
     List<OutRegistration> selectAll();
 
     int updateByPrimaryKey(OutRegistration record);

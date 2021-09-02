@@ -17,6 +17,22 @@ public interface RegistrationService {
      * @param id 客户
      * @return 返回外出记录信息
      */
-    public OutRegistration selByIdRecent(Integer id);
+    OutRegistration selByIdRecent(Integer id);
+
+    /**
+     * 登记外出/返回
+     *
+     * @param outRegistration
+     * @return
+     */
+    int update(OutRegistration outRegistration);
+
+    /**
+     * 逻辑删除外出记录
+     *
+     * @param id
+     * @return
+     */
+    int delete(Integer id);
 
 }

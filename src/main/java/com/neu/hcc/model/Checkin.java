@@ -251,6 +251,14 @@ public class Checkin {
         this.maritalStatus = maritalStatus == null ? null : maritalStatus.trim();
     }
 
+    public String getidcard() {
+        return idCard;
+    }
+
+    public String getaccommodationstatus() {
+        return accommodationStatus;
+    }
+
     public String getWeight() {
         return weight;
     }
@@ -281,5 +289,39 @@ public class Checkin {
 
     public void setAccommodationStatus(String accommodationStatus) {
         this.accommodationStatus = accommodationStatus == null ? null : accommodationStatus.trim();
+    }
+
+    @Override
+    public String toString() {
+        return "Checkin{" +
+                "id=" + id +
+                ", createBy='" + createBy + '\'' +
+                ", createDate=" + createDate +
+                ", updateBy='" + updateBy + '\'' +
+                ", updateDate=" + updateDate +
+                ", remarks='" + remarks + '\'' +
+                ", delFlag=" + delFlag +
+                ", customerName='" + customerName + '\'' +
+                ", customerAge='" + customerAge + '\'' +
+                ", customerSex='" + customerSex + '\'' +
+                ", idCard='" + idCard + '\'' +
+                ", roomId=" + roomId +
+                ", buildingId=" + buildingId +
+                ", recordId=" + recordId +
+                ", elderType='" + elderType + '\'' +
+                ", checkinDate=" + checkinDate +
+                ", expirationDate='" + expirationDate + '\'' +
+                ", contactTel='" + contactTel + '\'' +
+                ", bedId=" + bedId +
+                ", psychosomaticState='" + psychosomaticState + '\'' +
+                ", attention='" + attention + '\'' +
+                ", birthday='" + birthday + '\'' +
+                ", height='" + height + '\'' +
+                ", maritalStatus='" + maritalStatus + '\'' +
+                ", weight='" + weight + '\'' +
+                ", bloodType='" + bloodType + '\'' +
+                ", filePath='" + filePath + '\'' +
+                ", accommodationStatus='" + accommodationStatus + '\'' +
+                '}';
     }
 }

@@ -13,6 +13,8 @@ public interface CheckoutMapper {
 
     Checkout selectByPrimaryKey(Integer id);
 
+    int updateDel_flag(Integer id);
+
     List<Checkout> selectAll();
 
     int updateByPrimaryKey(Checkout record);

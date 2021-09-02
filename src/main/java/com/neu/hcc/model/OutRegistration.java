@@ -79,6 +79,30 @@ public class OutRegistration {
         this.updateDate = updateDate;
     }
 
+    @Override
+    public String toString() {
+        return "OutRegistration{" +
+                "id=" + id +
+                ", createBy='" + createBy + '\'' +
+                ", createDate=" + createDate +
+                ", updateBy='" + updateBy + '\'' +
+                ", updateDate=" + updateDate +
+                ", remarks='" + remarks + '\'' +
+                ", delFlag=" + delFlag +
+                ", customerId=" + customerId +
+                ", outgoingReason='" + outgoingReason + '\'' +
+                ", outgoingTime=" + outgoingTime +
+                ", expectedReturntime=" + expectedReturntime +
+                ", actualReturntime=" + actualReturntime +
+                ", escorted='" + escorted + '\'' +
+                ", relation='" + relation + '\'' +
+                ", escortedTel='" + escortedTel + '\'' +
+                ", auditStatus='" + auditStatus + '\'' +
+                ", auditPerson='" + auditPerson + '\'' +
+                ", auditTime=" + auditTime +
+                '}';
+    }
+
     public String getRemarks() {
         return remarks;
     }

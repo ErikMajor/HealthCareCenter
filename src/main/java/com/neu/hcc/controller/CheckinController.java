@@ -64,6 +64,34 @@ public class CheckinController {
         return res;
     }
 
+    @RequestMapping("updateCustomer")
+    @ResponseBody
+    public Map<String, Object> updateCustomer(@RequestBody Checkin checkin) {
+        System.out.println(checkin.toString());
+        Map<String, Object> res = new HashMap<>();
+        int rows = checkinService.updateCustomer(checkin);
+        if (rows == 0) {
+            res.put("state", "false");
+            return res;
+        }
+        res.put("state", "true");
+        return res;
+    }
+
+    @RequestMapping("delete")
+    @ResponseBody
+    public Map<String, Object> delete(@RequestParam(value = "id", required = true) Integer id) {
+        System.out.println(id);
+        Map<String, Object> res = new HashMap<>();
+        int rows = checkinService.deleteCheckin(id);
+        if (rows == 0) {
+            res.put("state", "false");
+            return res;
+        }
+        res.put("state", "true");
+        return res;
+    }
+
     @RequestMapping("addCustomer")
     @ResponseBody
     public Map<String, Object> addCustomer(@RequestParam(value = "customer", required = true) Checkin checkin) {

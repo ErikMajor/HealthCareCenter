@@ -58,7 +58,17 @@ public class CheckinServiceImpl implements CheckinService {
     }
 
     @Override
+    public int updateCustomer(Checkin checkin) {
+        return checkinMapper.updateByPrimaryKey(checkin);
+    }
+
+    @Override
     public int addCustomer(Checkin checkin) {
         return checkinMapper.insert(checkin);
+    }
+
+    @Override
+    public int deleteCheckin(Integer id) {
+        return checkinMapper.updateDel_flag(id);
     }
 }

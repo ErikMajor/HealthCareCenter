@@ -23,6 +23,8 @@ public interface CheckinMapper {
 
     int updateByPrimaryKey(Checkin record);
 
+    int updateDel_flag(Integer id);
+
     List<Checkin> queryUser(Checkin record);
 
     void updateRoomId(int roomId,int roomNumber);
