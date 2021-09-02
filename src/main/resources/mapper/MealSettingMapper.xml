@@ -15,21 +15,21 @@
     <result column="food_week" jdbcType="VARCHAR" property="foodWeek" />
   </resultMap>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-    delete from mealSetting
+    delete from keshe.mealSetting
     where id = #{id,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="com.neu.hcc.model.MealSetting">
-    insert into mealSetting (id, create_by, create_date, 
-      update_by, update_date, remarks, 
-      del_flag, customer_id, food_id, 
-      food_date, food_week)
-    values (#{id,jdbcType=INTEGER}, #{createBy,jdbcType=VARCHAR}, #{createDate,jdbcType=TIMESTAMP}, 
-      #{updateBy,jdbcType=VARCHAR}, #{updateDate,jdbcType=TIMESTAMP}, #{remarks,jdbcType=VARCHAR}, 
-      #{delFlag,jdbcType=INTEGER}, #{customerId,jdbcType=INTEGER}, #{foodId,jdbcType=INTEGER}, 
-      #{foodDate,jdbcType=VARCHAR}, #{foodWeek,jdbcType=VARCHAR})
+    insert into keshe.mealSetting (id, create_by, create_date,
+      update_by, update_date, remarks,
+      del_flag, customer_id, food_id,
+      food_date, food_week, row, col)
+    values (#{id,jdbcType=INTEGER}, #{createBy,jdbcType=VARCHAR}, #{createDate,jdbcType=TIMESTAMP},
+      #{updateBy,jdbcType=VARCHAR}, #{updateDate,jdbcType=TIMESTAMP}, #{remarks,jdbcType=VARCHAR},
+      #{delFlag,jdbcType=INTEGER}, #{customerId,jdbcType=INTEGER}, #{foodId,jdbcType=INTEGER},
+      #{foodDate,jdbcType=VARCHAR}, #{foodWeek,jdbcType=VARCHAR}, #{row,jdbcType=INTEGER}, #{col,jdbcType=INTEGER})
   </insert>
   <update id="updateByPrimaryKey" parameterType="com.neu.hcc.model.MealSetting">
-    update mealSetting
+    update keshe.mealSetting
     set create_by = #{createBy,jdbcType=VARCHAR},
       create_date = #{createDate,jdbcType=TIMESTAMP},
       update_by = #{updateBy,jdbcType=VARCHAR},
@@ -43,14 +43,16 @@
     where id = #{id,jdbcType=INTEGER}
   </update>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-    select id, create_by, create_date, update_by, update_date, remarks, del_flag, customer_id, 
+    select id, create_by, create_date, update_by, update_date, remarks, del_flag, customer_id,
     food_id, food_date, food_week
-    from mealSetting
+    from keshe.mealSetting
     where id = #{id,jdbcType=INTEGER}
   </select>
   <select id="selectAll" resultMap="BaseResultMap">
-    select id, create_by, create_date, update_by, update_date, remarks, del_flag, customer_id, 
+    select id, create_by, create_date, update_by, update_date, remarks, del_flag, customer_id,
     food_id, food_date, food_week
-    from mealSetting
+    from keshe.mealSetting
   </select>
+
+
 </mapper>

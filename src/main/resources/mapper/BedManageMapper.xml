@@ -17,23 +17,23 @@
     <result column="sort" jdbcType="INTEGER" property="sort" />
   </resultMap>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-    delete from bedManage
+    delete from keshe.bedManage
     where id = #{id,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="com.neu.hcc.model.BedManage">
-    insert into bedManage (id, create_by, create_date, 
-      update_by, update_date, remarks, 
-      del_flag, parent_id, room_number, 
-      bed_status, position_type, bedName, 
+    insert into keshe.bedManage (id, create_by, create_date,
+      update_by, update_date, remarks,
+      del_flag, parent_id, room_number,
+      bed_status, position_type, bedName,
       sort)
-    values (#{id,jdbcType=INTEGER}, #{createBy,jdbcType=VARCHAR}, #{createDate,jdbcType=TIMESTAMP}, 
-      #{updateBy,jdbcType=VARCHAR}, #{updateDate,jdbcType=TIMESTAMP}, #{remarks,jdbcType=VARCHAR}, 
-      #{delFlag,jdbcType=INTEGER}, #{parentId,jdbcType=INTEGER}, #{roomNumber,jdbcType=INTEGER}, 
-      #{bedStatus,jdbcType=VARCHAR}, #{positionType,jdbcType=VARCHAR}, #{bedname,jdbcType=VARCHAR}, 
+    values (#{id,jdbcType=INTEGER}, #{createBy,jdbcType=VARCHAR}, #{createDate,jdbcType=TIMESTAMP},
+      #{updateBy,jdbcType=VARCHAR}, #{updateDate,jdbcType=TIMESTAMP}, #{remarks,jdbcType=VARCHAR},
+      #{delFlag,jdbcType=INTEGER}, #{parentId,jdbcType=INTEGER}, #{roomNumber,jdbcType=INTEGER},
+      #{bedStatus,jdbcType=VARCHAR}, #{positionType,jdbcType=VARCHAR}, #{bedname,jdbcType=VARCHAR},
       #{sort,jdbcType=INTEGER})
   </insert>
   <update id="updateByPrimaryKey" parameterType="com.neu.hcc.model.BedManage">
-    update bedManage
+    update keshe.bedManage
     set create_by = #{createBy,jdbcType=VARCHAR},
       create_date = #{createDate,jdbcType=TIMESTAMP},
       update_by = #{updateBy,jdbcType=VARCHAR},
@@ -48,15 +48,36 @@
       sort = #{sort,jdbcType=INTEGER}
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-    select id, create_by, create_date, update_by, update_date, remarks, del_flag, parent_id, 
+  <select id="searchBeds" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select id, create_by, create_date, update_by, update_date, remarks, del_flag, parent_id,
     room_number, bed_status, position_type, bedName, sort
-    from bedManage
-    where id = #{id,jdbcType=INTEGER}
+    from keshe.bedManage
+    where room_number = #{roomNumber,jdbcType=INTEGER}
   </select>
   <select id="selectAll" resultMap="BaseResultMap">
-    select id, create_by, create_date, update_by, update_date, remarks, del_flag, parent_id, 
+    select id, create_by, create_date, update_by, update_date, remarks, del_flag, parent_id,
     room_number, bed_status, position_type, bedName, sort
-    from bedManage
+    from keshe.bedManage
   </select>
+  <update id="addCustomerBed" parameterType="com.neu.hcc.model.BedManage">
+    update keshe.bedManage
+    set parent_id = #{parentId,jdbcType=INTEGER}
+    where room_number = #{roomNumber,jdbcType=INTEGER}
+    and id = #{id,jdbcType=INTEGER}
+    and bed_status = #{bedStatus,jdbcType=VARCHAR}
+  </update>
+
+  <update id="updateStatus" parameterType="com.neu.hcc.model.BedManage">
+    update keshe.bedManage
+    set bed_status = #{bedStatus,jdbcType=VARCHAR}
+    where parent_id is not null
+  </update>
+
+  <select id="searchCustomerId" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select parent_id
+    from keshe.bedManage
+    where bed_status = #{bedStatus}
+  </select>
+
+
 </mapper>

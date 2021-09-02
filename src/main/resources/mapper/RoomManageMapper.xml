@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.neu.hcc.mapper.RoomManageMapper">
+    <resultMap id="BaseResultMap" type="com.neu.hcc.model.RoomManage">
+        <id column="id" jdbcType="INTEGER" property="id" />
+        <result column="room_status" jdbcType="VARCHAR" property="roomStatus" />
+        <result column="remain_beds" jdbcType="INTEGER" property="remainBeds" />
+        <result column="occupied_beds" jdbcType="INTEGER" property="occupiedBeds" />
+        <result column="total_beds" jdbcType="INTEGER" property="totalBeds" />
+    </resultMap>
+    <select id="searchRooms" resultMap="BaseResultMap">
+        select *
+        from keshe.roomManage
+    </select>
+    <update id="insertRoom" parameterType="com.neu.hcc.model.RoomManage">
+        update keshe.roomManage
+        set total_beds = #{totalBeds,jdbcType=INTEGER},
+            remain_beds = #{remainBeds,jdbcType=INTEGER},
+            occupied_beds = #{occupiedBeds,jdbcType=INTEGER}
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+</mapper>

@@ -69,4 +69,64 @@
     select count(*)
     from keshe.mealCalendar
   </select>
+
+  <select id="selectMealMessage" parameterType="java.lang.Object" resultMap="BaseResultMap">
+    select * from keshe.mealCalendar
+    where id in
+          (select food_id from keshe.mealSetting
+           where customer_id = #{customerId,jdbcType=INTEGER}
+             and food_week = #{foodWeek,jdbcType=INTEGER}
+             and food_date = #{foodDate,jdbcType=INTEGER})
+  </select>
+
+  <select id="getMealNum" resultType="java.lang.Integer">
+    select count(*) from keshe.mealCalendar
+    where id in
+          (select food_id from keshe.mealSetting
+           where customer_id = #{customerId,jdbcType=INTEGER}
+             and food_week = #{foodWeek,jdbcType=INTEGER}
+             and food_date = #{foodDate,jdbcType=INTEGER})
+  </select>
+
+  <select id="search" parameterType="java.lang.Object" resultMap="BaseResultMap">
+    select * from keshe.mealCalendar
+    <where>
+      <if test="foodType != ''">
+        food_type = #{foodType}
+      </if>
+      <if test="foodTag != ''">
+          and food_tag = #{foodTag}
+      </if>
+      <if test="supplyDate != ''">
+          and supply_date = #{supplyDate}
+      </if>
+      <if test="supplyType != ''">
+          and supply_type = #{supplyType}
+      </if>
+      <if test="foodName != ''">
+        and food_name = #{foodName}
+      </if>
+    </where>
+  </select>
+
+  <select id="getSearchNum" resultType="java.lang.Integer">
+  select count(*) from keshe.mealCalendar
+  <where>
+    <if test="foodName != ''">
+      food_name = #{foodName}
+    </if>
+    <if test="foodType != ''">
+      and food_type = #{foodType}
+    </if>
+    <if test="foodTag != ''">
+      and food_tag = #{foodTag}
+    </if>
+    <if test="supplyDate != ''">
+      and supply_date = #{supplyDate}
+    </if>
+    <if test="supplyType != ''">
+      and supply_type = #{supplyType}
+    </if>
+  </where>
+  </select>
 </mapper>

@@ -25,6 +25,10 @@ public class MealSetting {
 
     private String foodWeek;
 
+    private int row;
+
+    private int col;
+
     public Integer getId() {
         return id;
     }
@@ -111,5 +115,21 @@ public class MealSetting {
 
     public void setFoodWeek(String foodWeek) {
         this.foodWeek = foodWeek == null ? null : foodWeek.trim();
+    }
+
+    public int getRow() {
+        return row;
+    }
+
+    public void setRow(int row) {
+        this.row = row;
+    }
+
+    public int getCol() {
+        return col;
+    }
+
+    public void setCol(int col) {
+        this.col = col;
     }
 }

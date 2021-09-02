@@ -1,5 +1,6 @@
 package com.neu.hcc.mapper;
 
+import com.neu.hcc.model.BedManage;
 import com.neu.hcc.model.Checkin;
 import org.springframework.stereotype.Repository;
 
@@ -18,4 +19,8 @@ public interface CheckinMapper {
     List<Checkin> selectByName(String name);
 
     int updateByPrimaryKey(Checkin record);
+
+    List<Checkin> queryUser(Checkin record);
+
+    void updateRoomId(int roomId,int roomNumber);
 }

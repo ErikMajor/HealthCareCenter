@@ -1,11 +1,8 @@
 package com.neu.hcc.mapper;
 
 import com.neu.hcc.model.BedManage;
-import org.springframework.stereotype.Repository;
-
 import java.util.List;
 
-@Repository
 public interface BedManageMapper {
     int deleteByPrimaryKey(Integer id);
 
@@ -16,4 +13,12 @@ public interface BedManageMapper {
     List<BedManage> selectAll();
 
     int updateByPrimaryKey(BedManage record);
+
+    List<BedManage> searchBeds(BedManage bedManage);
+
+    void addCustomerBed(BedManage bedManage);
+
+    List<BedManage> searchCustomerId(String bedStatus);
+
+    void updateStatus(String bedStatus,int parentId);
 }
