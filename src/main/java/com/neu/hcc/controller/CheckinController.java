@@ -2,6 +2,7 @@ package com.neu.hcc.controller;
 
 import com.github.pagehelper.PageInfo;
 import com.neu.hcc.model.Checkin;
+import com.neu.hcc.model.Customer;
 import com.neu.hcc.service.CheckinService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -47,7 +48,7 @@ public class CheckinController {
     @ResponseBody
     public Map<String, Object> queryByName(@RequestParam(value = "name", defaultValue = "", required = true) String name) {
         Map<String, Object> res = new HashMap<>();
-        List<Checkin> customers = checkinService.selListByName(name);
+        List<Customer> customers = checkinService.selListByName(name);
         res.put("customers", customers);
         return res;
     }

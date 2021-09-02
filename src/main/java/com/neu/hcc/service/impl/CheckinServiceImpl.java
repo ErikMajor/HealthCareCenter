@@ -4,6 +4,7 @@ import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.neu.hcc.mapper.CheckinMapper;
 import com.neu.hcc.model.Checkin;
+import com.neu.hcc.model.Customer;
 import com.neu.hcc.service.CheckinService;
 import com.neu.hcc.util.Define;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -45,8 +46,8 @@ public class CheckinServiceImpl implements CheckinService {
     }
 
     @Override
-    public List<Checkin> selListByName(String name) {
-        List<Checkin> checkins = new ArrayList<>(checkinMapper.selectListByName(name));
+    public List<Customer> selListByName(String name) {
+        List<Customer> checkins = new ArrayList<>(checkinMapper.selectListByName(name));
         return checkins;
     }
 

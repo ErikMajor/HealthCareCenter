@@ -1,6 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.neu.hcc.mapper.CheckinMapper">
+    <resultMap id="map" type="com.neu.hcc.model.Customer">
+        <id column="id" jdbcType="INTEGER" property="id"/>
+        <result column="create_by" jdbcType="VARCHAR" property="createBy"/>
+        <result column="create_date" jdbcType="TIMESTAMP" property="createDate"/>
+        <result column="update_by" jdbcType="VARCHAR" property="updateBy"/>
+        <result column="update_date" jdbcType="TIMESTAMP" property="updateDate"/>
+        <result column="remarks" jdbcType="VARCHAR" property="remarks"/>
+        <result column="del_flag" jdbcType="INTEGER" property="delFlag"/>
+        <result column="customer_name" jdbcType="VARCHAR" property="value"/>
+        <result column="customer_age" jdbcType="VARCHAR" property="customerAge"/>
+        <result column="customer_sex" jdbcType="VARCHAR" property="customerSex"/>
+        <result column="idCard" jdbcType="VARCHAR" property="idCard"/>
+        <result column="room_id" jdbcType="INTEGER" property="roomId"/>
+        <result column="building_id" jdbcType="INTEGER" property="buildingId"/>
+        <result column="record_id" jdbcType="INTEGER" property="recordId"/>
+        <result column="elder_type" jdbcType="VARCHAR" property="elderType"/>
+        <result column="checkin_date" jdbcType="TIMESTAMP" property="checkinDate"/>
+        <result column="expiration_date" jdbcType="VARCHAR" property="expirationDate"/>
+        <result column="contact_tel" jdbcType="VARCHAR" property="contactTel"/>
+        <result column="bed_id" jdbcType="INTEGER" property="bedId"/>
+        <result column="psychosomatic_state" jdbcType="VARCHAR" property="psychosomaticState"/>
+        <result column="attention" jdbcType="VARCHAR" property="attention"/>
+        <result column="birthday" jdbcType="VARCHAR" property="birthday"/>
+        <result column="height" jdbcType="VARCHAR" property="height"/>
+        <result column="marital_status" jdbcType="VARCHAR" property="maritalStatus"/>
+        <result column="weight" jdbcType="VARCHAR" property="weight"/>
+        <result column="blood_type" jdbcType="VARCHAR" property="bloodType"/>
+        <result column="file_path" jdbcType="VARCHAR" property="filePath"/>
+        <result column="accommodationStatus" jdbcType="VARCHAR" property="accommodationStatus"/>
+    </resultMap>
     <resultMap id="BaseResultMap" type="com.neu.hcc.model.Checkin">
         <id column="id" jdbcType="INTEGER" property="id"/>
         <result column="create_by" jdbcType="VARCHAR" property="createBy"/>
@@ -179,8 +209,9 @@
         <include refid="allColumns"></include>
         where customer_name like '%${name}%' and del_flag = 0
     </select>
-    <select id="selectListByName" resultMap="BaseResultMap" parameterType="java.lang.String">
-        select id, customer_name as value from checkin where customer_name like '%${name}%' and del_flag = 0
+    <select id="selectListByName" resultMap="map" parameterType="java.lang.String">
+        <include refid="allColumns"></include>
+        where customer_name like '%${name}%' and del_flag = 0
     </select>
     <update id="updateRoomId" parameterType="com.neu.hcc.model.Checkin">
         update keshe.checkin

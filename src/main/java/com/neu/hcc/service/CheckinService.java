@@ -2,6 +2,7 @@ package com.neu.hcc.service;
 
 import com.github.pagehelper.PageInfo;
 import com.neu.hcc.model.Checkin;
+import com.neu.hcc.model.Customer;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -28,7 +29,7 @@ public interface CheckinService {
      * @param name
      * @return
      */
-    public List<Checkin> selListByName(String name);
+    public List<Customer> selListByName(String name);
 
     /**
      * 返回所有的入住客户信息

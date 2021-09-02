@@ -1,10 +1,11 @@
 package com.neu.hcc.mapper;
 
-import com.neu.hcc.model.BedManage;
 import com.neu.hcc.model.Checkin;
+import com.neu.hcc.model.Customer;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Map;
 
 @Repository
 public interface CheckinMapper {
@@ -26,5 +27,5 @@ public interface CheckinMapper {
 
     void updateRoomId(int roomId,int roomNumber);
 
-    List<Checkin> selectListByName(String name);
+    List<Customer> selectListByName(String name);
 }
