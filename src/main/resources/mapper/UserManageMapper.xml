@@ -69,7 +69,7 @@
     from keshe.userManage
     where id = #{id,jdbcType=INTEGER}
   </select>
-  <select id="selectAll" resultMap="BaseResultMap">
+  <select id="selectAll" parameterType="java.lang.Object" resultMap="BaseResultMap">
     select id, create_by, create_date, update_by, update_date, remarks, del_flag, staff_name,
     staff_sex, staff_age, staff_number, staff_type, entry_date, operate_name, duty, position_title,
     brief, phone_number
